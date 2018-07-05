@@ -66,7 +66,7 @@ $(function(){
 
 			//Start qis.service for all components-------------------------------------
             qis.service('ALTextToSpeech').done(function(ins){
-                als.alTextToSpeech = ins;
+                als.AlTextToSpeech = ins;
             });
 			qis.service('ALMotion').done(function(ins){
                 als.AlMotion  =  ins ; 
@@ -84,7 +84,7 @@ $(function(){
                 als.AlALTabletService  =  ins ; 
             }); 
             qis.service('ALAutonomousLife').done(function(ins){
-                als.ALAutonomousLife  =  ins; 
+                als.AlAutonomousLife  =  ins; 
             }); 
             qis.service('ALBehaviorManager').done(function(ins){ 
                 als.alALBehaviorManager=ins; 
@@ -99,7 +99,7 @@ $(function(){
                 als.AlALAutonomousMoves  =  ins ; 
             }); 
             qis.service('ALLeds').done(function(ins){ 
-                als.alALLeds  =  ins ; 
+                als.AlLeds  =  ins ; 
             }); 
             qis.service('ALSystem').done(function(ins){ 
                 als.AlALSystem  =  ins ; 
@@ -124,58 +124,58 @@ $(function(){
    /* $('#test-btn').on('click', function(){
         console.log('[say the Text]');
 		TextBox = $('#TextBox').val();
-        if(als.alTextToSpeech) als.alTextToSpeech.say(TextBox);
+        if(als.AlTextToSpeech) als.AlTextToSpeech.say(TextBox);
     });*/
 	$('#btn-chao').on('click', function(){  //-------------Say Goodbye
         console.log('[Tschuss]');
 		switch (Math.floor((Math.random() * 5))){
-        case 0: als.alTextToSpeech.say('Tschüss');break;
-		case 1: als.alTextToSpeech.say('Aufwiedersehen');break;
-		case 2: als.alTextToSpeech.say('Servus');break;
-		case 3: als.alTextToSpeech.say('Wiedersehen!');break;
-		case 4: als.alTextToSpeech.say('schön tag noch!');break;
+        case 0: als.AlTextToSpeech.say('Tschüss');break;
+		case 1: als.AlTextToSpeech.say('Aufwiedersehen');break;
+		case 2: als.AlTextToSpeech.say('Servus');break;
+		case 3: als.AlTextToSpeech.say('Wiedersehen!');break;
+		case 4: als.AlTextToSpeech.say('schön tag noch!');break;
 		default:console.log('[Tschuss=> Error ]');
 		}
     });
 	$('#btn-hallo').on('click', function(){//-------------Say Hello
         console.log('[Hallo]');
 		switch (Math.floor((Math.random() * 5))){
-        case 0: als.alTextToSpeech.say('Hallo ');break;
-		case 1: als.alTextToSpeech.say('hi');break;
-		case 2: als.alTextToSpeech.say('Servus');break;
-		case 3: als.alTextToSpeech.say('Hallo, Leute!');break;
+        case 0: als.AlTextToSpeech.say('Hallo ');break;
+		case 1: als.AlTextToSpeech.say('hi');break;
+		case 2: als.AlTextToSpeech.say('Servus');break;
+		case 3: als.AlTextToSpeech.say('Hallo, Leute!');break;
 		case 4: console.log(d.getHours());
 			var x=d.getHours();
 				if (x<10)
-					als.alTextToSpeech.say('Guten Morgen');
+					als.AlTextToSpeech.say('Guten Morgen');
 				else if(5<x<17)
-					als.alTextToSpeech.say('Guten Tag');
+					als.AlTextToSpeech.say('Guten Tag');
 				else 
-					als.alTextToSpeech.say('Guten Abend');
+					als.AlTextToSpeech.say('Guten Abend');
 
 			default:console.log('[Hallo=> Error ]');break;
 			}
     });
 	$('#btn-wiegehts').on('click', function(){//-------------How are you
         console.log('[Wie gehts Ihnenen]');
-        if(als.alTextToSpeech) als.alTextToSpeech.say('Wie gehts Ihnenen');
+        if(als.AlTextToSpeech) als.AlTextToSpeech.say('Wie gehts Ihnenen');
     });
 	$('#btn-danke').on('click', function(){//-------------Thanks
         console.log('[Danke ]');
 		switch (Math.floor((Math.random() * 5))){
-        case 0: als.alTextToSpeech.say('Danke ');break;
-		case 1: als.alTextToSpeech.say('Danke Sehr');break;
-		case 2: als.alTextToSpeech.say('Vielen Dank!');break;
-		case 3: als.alTextToSpeech.say('Recht schönen Dank!');break;
-		case 4: als.alTextToSpeech.say('dankeschön');break;
+        case 0: als.AlTextToSpeech.say('Danke ');break;
+		case 1: als.AlTextToSpeech.say('Danke Sehr');break;
+		case 2: als.AlTextToSpeech.say('Vielen Dank!');break;
+		case 3: als.AlTextToSpeech.say('Recht schönen Dank!');break;
+		case 4: als.AlTextToSpeech.say('dankeschön');break;
 		default:console.log('[Danke=> Error ]');
 		}
     });
 	$('#btn-freue').on('click', function(){//-------------My pleasure
         console.log('[Freue]');
 		switch (Math.floor((Math.random() * 2))){
-        case 0: als.alTextToSpeech.say('Ich freue mich, dich zu sehen ');break;
-		case 1: als.alTextToSpeech.say('Freut mich, dich kennenzulernen');break;
+        case 0: als.AlTextToSpeech.say('Ich freue mich, dich zu sehen ');break;
+		case 1: als.AlTextToSpeech.say('Freut mich, dich kennenzulernen');break;
 		default:console.log('[Freue=> Error ]');
 		}
 
@@ -210,18 +210,18 @@ $(function(){
 	$('#btn-sleep').on('click', function(){			//--------------sleep mode
 		als.AlALTabletService.goToSleep ();				//Put the tablet in sleep mode (standby mode).	
 		als.AlMotion.rest();							
-		als.alALLeds.fadeRGB("AllLeds","magenta",0.0); //set all leds to magenta	
+		als.AlLeds.fadeRGB("AllLeds","magenta",0.0); //set all leds to magenta	
     });	
 	$('#btn-wakeup').on('click', function(){		//--------------wake up
 		als.AlMotion.wakeUp();
 		als.AlALTabletService.wakeUp();				//Wake the tablet (from standby mode).	
-		als.alALLeds.reset("AllLeds");				//put leds to default condition
+		als.AlLeds.reset("AllLeds");				//put leds to default condition
     });	
 	$('#btn-test1').on('click', function(){//for test
         console.log('[test]');
         
 
-		//als.alALLeds.fadeRGB("FaceLeds","yellow",0.0); //face leds to yellow,red,blue,green.white			
+		//als.AlLeds.fadeRGB("FaceLeds","yellow",0.0); //face leds to yellow,red,blue,green.white			
 		//als.ALAutonomousLife.setState("disabled"); 		//put the pepper in sleep mode
 		//als.ALAutonomousLife.setState("solitary");		//normal life
 		//als.ALAutonomousLife.setState("interactive");		//i don't know :\
@@ -322,23 +322,23 @@ $(function(){
 	//--------------------------------------color of pepper-----------
 	$('#btn-red').on('click', function(){
 		console.log('[Color Red]');	
-		als.alALLeds.fadeRGB("AllLeds","red",0.0); //set all leds to red
+		als.AlLeds.fadeRGB("AllLeds","red",0.0); //set all leds to red
     });	
 	$('#btn-green').on('click', function(){
 		console.log('[Color Green]');	
-		als.alALLeds.fadeRGB("AllLeds","green",0.0); //set all leds to green
+		als.AlLeds.fadeRGB("AllLeds","green",0.0); //set all leds to green
     });	
 	$('#btn-blue').on('click', function(){
 		console.log('[Color Blue]');
-		als.alALLeds.fadeRGB("AllLeds","blue",0.0); //set all leds to blue	
+		als.AlLeds.fadeRGB("AllLeds","blue",0.0); //set all leds to blue	
     });	
 	$('#btn-yellow').on('click', function(){
 		console.log('[Color Yellow]');	
-		als.alALLeds.fadeRGB("AllLeds","yellow",0.0); //set all leds to yellow
+		als.AlLeds.fadeRGB("AllLeds","yellow",0.0); //set all leds to yellow
     });	
 	$('#btn-def').on('click', function(){
 		console.log('[Default Color]');	
-		als.alALLeds.reset("AllLeds"); 				//Set a LED or Group of LEDs to their default state.
+		als.AlLeds.reset("AllLeds"); 				//Set a LED or Group of LEDs to their default state.
     });	
 	
 	function validate(e){//-----------speech text box area-----------
