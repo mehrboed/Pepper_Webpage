@@ -52,14 +52,23 @@ $(function(){
     //----------Connectios-----------------------------------------------------------------------
     $('#connect-btn').on('click', function(){				// button connect & NAOqi Session 
         
-        ip = $('#ip').val();
+        if(document.getElementById('radioRobbie').checked) {
+			ip = '192.168.1.102';
+		}else if(document.getElementById('radioPaula').checked) {
+			ip = '192.168.1.126';
+		}else if(document.getElementById('radioIP').checked) {
+			ip = $('#ip').val();
+		}
+		//ip = $('#ip').val();						
         // NAOqi Session 
+		console.log(ip);
+
         qis = new QiSession(ip);
         // socketing
         qis.socket(qis)		
        .on('connect', function(){		//------------------------------------ on connect  & qis.service for all components            
-            console.log('[CONNECTED]');
-			document.getElementById('lblConnect').innerHTML = 'Connected';
+
+	   document.getElementById('lblConnect').innerHTML = 'Connected';
 			document.getElementById('lblConnect').style.color = "green";
 			document.getElementById('lblConnect').attributes
 			//alert ( '[CONNECTED]' );
@@ -198,6 +207,13 @@ $(function(){
 		als.AlALTabletService.loadUrl("http://google.com/");  
 		
     });	
+	
+	function myFunction(event) {
+		var x = event.which || event.keyCode;
+		console.log(x);
+		switch(x){
+			case 117:console.log('[test]');
+		}
 	$('#btn-shutdown').on('click', function(){		//--------------shutdown		
 		als.AlALTabletService.goToSleep ();			//Put the tablet in sleep mode (standby mode).	
 		als.AlALSystem.shutdown();	
@@ -217,6 +233,17 @@ $(function(){
 		als.AlALTabletService.wakeUp();				//Wake the tablet (from standby mode).	
 		als.AlLeds.reset("AllLeds");				//put leds to default condition
     });	
+	$('#btn-execute').on('click', function(){		//--------------wake up
+		if(document.getElementById('radioDisabled').checked) 
+			als.AlAutonomousLife.setState("disabled"); 		//put the pepper in sleep mode
+        if(document.getElementById('radioSolitary').checked) 
+			als.AlAutonomousLife.setState("solitary");		//normal life
+        if(document.getElementById('radioInteractive').checked) 
+			als.AlAutonomousLife.setState("interactive");		//i don't know 
+        if(document.getElementById('radioSafeguard').checked) 
+			als.AlAutonomousLife.setState("safeguard");		//freezing mode
+	
+    });
 	$('#btn-test1').on('click', function(){//for test
         console.log('[test]');
         
@@ -318,7 +345,13 @@ $(function(){
 		als.AlMotion.move(0.0,0.0,0.0);
 	}		
 	
-
+	//--------------------------------------change name of pepper-----------
+	$('#btn-program').on('click', function(){
+		console.log('[programmable part]');	
+		//als.AlALTabletService.showWebview("http://198.18.0.1/apps/boot-config/preloading_dialog.html"); //working
+		//als.AlALTabletService.showWebview("http://198.18.0.1/apps/boot-config/preloading_dialog.html"); 
+		als.AlALTabletService.showWebview("http://198.18.0.1/apps/tablettest-a12269/Url_Page.jpg");
+    });	
 	//--------------------------------------color of pepper-----------
 	$('#btn-red').on('click', function(){
 		console.log('[Color Red]');	
@@ -344,16 +377,25 @@ $(function(){
 	function validate(e){//-----------speech text box area-----------
 		var text=e.target.value;
 		TextBox = $('#TextBox').val();
-				console.log(TextBox);		
+				console.log(TextBox);	
+			als.AlTextToSpeech.setLanguage('German')	
+//als.AlTextToSpeech.setLanguage('English')											   
         if(als.AlAnimatedSpeech) als.AlAnimatedSpeech.say(TextBox);//animation say-> read the text box
 		document.getElementById("TextBox").value = "";
 	}
 
 	setInterval(function(){//-----------Timer for battery and check the connection-----------
-			//als.AlALTabletService.getBrightness().done(function(val){
-			als.AlALBattery.getBatteryCharge().done(function(val){
-			document.getElementById('lblBattery').innerHTML = val;
+		//als.AlALTabletService.getBrightness().done(function(val){
+		als.AlAutonomousLife.getState().done(function(val){
+			document.getElementById('lblTemp').innerHTML = val;
+			})
+        als.AlALBattery.getBatteryCharge().done(function(val){
+            document.getElementById('lblBattery').innerHTML = val;
+        	})
+		als.AlALAudioDevice.getOutputVolume().done(function(val){
+			document.getElementById('lblVolume').innerHTML=val;
+			document.getElementById("myRange").value = val;
 		})
-		}, 60000); //every minute will check the level Battery
-
+			
+    }, 1000); //every minute will check the level Battery
 	});

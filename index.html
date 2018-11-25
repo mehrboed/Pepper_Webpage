@@ -6,45 +6,68 @@
     <script src="libs/qimessaging/1.0/jquery.min.js"></script>
     <script src="libs/qimessaging/1.0/qimessaging.js"></script>
     <script src="js/pepper.js"></script>
-	
+		<style>
+	.connect-btn {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 20px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 26px;
+}
+	</style> 
  </head>
    <body>
   <table >
 	<tr> <!Connection area>
-		<th>
+		<td style="text-align:left" > 
 		
-			<label  id="lblBattery" background="Green" width="100px"></label>
-			<input type="text" id="ip" placeholder="IP Address" name="ip" autocomplete="on" ></input>
+
+			​
+				<input id="radioRobbie" type="radio" name="RadioIP" value="robbie"  checked = "true"  > Robbie 192.168.1.102<br> 
+				 <input id="radioPaula" type="radio" name="RadioIP" value="paula"> Paula  192.168.1.126<br>
+				<input id="radioIP" type="radio" name="RadioIP" value="other"> Other Ip address
+			
+			<input type="text" id="ip" placeholder="192.168.1.102" name="ip" autocomplete="on" ></input>
 			<button type="submit" id="connect-btn">Connect</button>
+		</td>
+		<td style="text-align:center">
+			<label  id="lblBattery" background="Green" width="100px" value="00"></label>
+			<label  id="lblTemp" width="100px" value="Normal"></label>
 			<label  id="lblConnect">Disconnected</label>
-		</th>
+		</td>
 	</tr>
-	<tr>
-		<th>
+	<tr style="text-align:Right">
+		<td colspan="1">
 			<div class="slidecontainer">
 				Volume =
 				<label  id="lblVolume"></label>
 				<input type="range" min="20" max="95" value="50" class="slider" id="myRange">
 				
 			</div>
-				<div class="slidecontainer">
+			<div class="slidecontainer">
 				Bright =
 				<label  id="lblBright"></label>
 				<input type="range" min="50" max="100" value="75" class="slider" id="myRangeBright">
 				
 			</div>
-		</th>
+		</td>
+		<td>
+			<button type="program" id="btn-program">program</button>
+		</td>   
 	</tr>
 	<tr>
-		<th>
+		<td colspan="2">
 			<p>
 				<textarea spellcheck="false" type="text" id="TextBox" style="width:100%;height:150px;font-family:Times New Roman;font-size:10"  >
 				</textarea>
 			</p>
-		</th>
+		</td>
 	</tr>
 	<tr>
-		<th>
+		<td colspan="2">
 			<button type="button" id="btn-hallo">Hallo</button>
 			<button type="button" id="btn-chao">Tschuss!</button>
 			<button type="button" id="btn-freue">Freue</button>
@@ -52,10 +75,10 @@
 			<button type="button" id="btn-danke">Danke</button>
 			
 
-			</th>
+			</td>
 	</tr>
 	<tr>
-		<th>
+		<td colspan="2">
 			<button type="button" id="btn-aria">ARiA</button>
 			<button type="button" id="btn-stop">Stop</button>
 			<button type="button" id="btn-google">Google</button>
@@ -64,41 +87,48 @@
 			<button type="button" id="btn-shutdown">Shut down</button>
 			<button type="button" id="btn-wakeup">Wake Up</button>
 
-			</th>
+		</td>
+		<td>
+			<input id="radioDisabled" type="radio" name="AutonomousLife" value="disabled"> Disabled<br> 
+			<input id="radioSolitary" type="radio" name="AutonomousLife" value="solitary"> Solitary<br>
+			<input id="radioInteractive" type="radio" name="AutonomousLife" value="interactive"> Interactive<br>
+			<input id="radioSafeguard" type="radio" name="AutonomousLife" value="safeguard"> Safeguard
+			<button type="button" id="btn-execute">Execute</button>
+		</td>
 	</tr>
-	<tr>
-		<th>
+	<tr style="text-align:center">
+		<td colspan="2">
 			Speed =
 			<label  id="lblSpeed"></label>
 			<input type="range" min="1" max="10" value="5" class="slider" id="myRangeSpeed">
-		</th>
+		</td>
 	</tr>
 	<tr>
-		<th>
+		<td colspan="2">
 			<button type="button" id="btn-forward" >Forward[W]</button>
 			<button type="button" id="btn-left">Left[A]</button>
 			<button type="button" id="btn-right">Right[D]</button>
 			<button type="button" id="btn-backward">Backward[S]</button>
 			<button type="button" id="btn-ccw">CCW[Q]</button>
 			<button type="button" id="btn-cw">CW[E]</button>
-		</th>
+		</td>
 	</tr>
 		<tr>
-		<th>
+		<td rowspan="1">
 			<button type="button" id="btn-blue">Blue</button>
 			<button type="button" id="btn-red">Red</button>
 			<button type="button" id="btn-green">Green</button>
 			<button type="button" id="btn-yellow">Yellow</button>
 			<button type="button" id="btn-def">Default</button>
 
-		</th>
+		</td>
 	</tr>
 	<!           Logo>
-	<tr>
-		<th valign="bottom" height="160px">
-			<img src="img/logo_uni_siegen.jpg" alt="Flowers in Chania" style="width:200px;height:56px;">
-			<img src="img/wissjahr-logo-web.png" alt="Flowers in Chania" style="width:130px;height:65px;">
-		</th>
+	<tr style="text-align:center">
+		<td valign="bottom" height="100px">
+			<img src="img/logo_uni_siegen.jpg" alt="University Logo" style="width:200px;height:56px;">
+			<img src="img/wissjahr-logo-web.png" alt="Wissenschaftjahr Logo" style="width:130px;height:65px;">
+		</td>
 	</tr>	
 	
 		
