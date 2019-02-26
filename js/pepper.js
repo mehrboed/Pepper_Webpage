@@ -14,7 +14,7 @@ $(function(){
 		var volume = parseInt(outputVolume.innerHTML);	//Pepper just accept float as input in function
 			als.AlALAudioDevice.setOutputVolume(volume); 
 		}
-		//Bright slide bar -------------------------------------------------------------------------
+	//Bright slide bar -------------------------------------------------------------------------
 		var sliderBright = document.getElementById("myRangeBright");
 		var outputBright = document.getElementById("lblBright");
 			outputBright.innerHTML = sliderBright.value; // Display the default slider value
@@ -28,13 +28,13 @@ $(function(){
 		als.AlALTabletService.setBrightness(1); 
 		console.log('Current Bright =',Br);
 		}		
-		//Speed slide bar -------------------------------------------------------------------------
+	//Speed slide bar -------------------------------------------------------------------------
 		var sliderSpeed = document.getElementById("myRangeSpeed");
 		var outputSpeed = document.getElementById("lblSpeed");
 			outputSpeed.innerHTML = sliderSpeed.value; // Display the default slider value
 		var SP = parseFloat(outputSpeed.innerHTML/10);
 			Speed = parseFloat(SP);		
-		// Update the current slider value (each time you drag the slider handle)
+	// Update the current slider value (each time you drag the slider handle)
 		sliderSpeed.oninput = function() {
 			outputSpeed.innerHTML = this.value;
 			//console.log(output.innerHTML);
@@ -51,7 +51,6 @@ $(function(){
 	});	
     //----------Connectios-----------------------------------------------------------------------
     $('#connect-btn').on('click', function(){				// button connect & NAOqi Session 
-        
         if(document.getElementById('radioRobbie').checked) {
 			ip = '192.168.1.102';
 		}else if(document.getElementById('radioPaula').checked) {
@@ -59,20 +58,17 @@ $(function(){
 		}else if(document.getElementById('radioIP').checked) {
 			ip = $('#ip').val();
 		}
-		//ip = $('#ip').val();						
+		//ip = $('#ip').val();
         // NAOqi Session 
-		console.log(ip);
-
+			console.log(ip);
         qis = new QiSession(ip);
+
         // socketing
         qis.socket(qis)		
        .on('connect', function(){		//------------------------------------ on connect  & qis.service for all components            
-
-	   document.getElementById('lblConnect').innerHTML = 'Connected';
+			document.getElementById('lblConnect').innerHTML = 'Connected';
 			document.getElementById('lblConnect').style.color = "green";
 			document.getElementById('lblConnect').attributes
-			//alert ( '[CONNECTED]' );
-
 			//Start qis.service for all components-------------------------------------
             qis.service('ALTextToSpeech').done(function(ins){
                 als.AlTextToSpeech = ins;
@@ -112,16 +108,16 @@ $(function(){
             }); 
             qis.service('ALSystem').done(function(ins){ 
                 als.AlALSystem  =  ins ; 
-            }); 
+            });
         })
         .on('disconnect', function(){	// ------------------------------------on disconnect
-            
+
             console.log('[DISCONNECTED]');
 			document.getElementById('lblConnect').style.color = "yellow";
 			document.getElementById('lblConnect').attributes
         })
         .on('error', function(){ 		// ------------------------------------On error
-            
+
             console.log('[CONNECTION ERROR]');
 			document.getElementById('lblConnect').innerHTML = 'Connection error';
 			document.getElementById('lblConnect').style.color = "red";
@@ -202,18 +198,19 @@ $(function(){
 		als.alALBehaviorManager.stopAllBehaviors()
 
     });
-	$('#btn-google').on('click', function(){		//--------------launch google
+	$('#btn-show-webpage').on('click', function(){		//--------------show the web
 		als.AlALTabletService.showWebview (); 			//show web page	
-		als.AlALTabletService.loadUrl("http://google.com/");  
+		var URLs = $('#input-url').val();
+		als.AlALTabletService.loadUrl(URLs);  
 		
     });	
-	
 	function myFunction(event) {
 		var x = event.which || event.keyCode;
 		console.log(x);
 		switch(x){
 			case 117:console.log('[test]');
 		}
+	}
 	$('#btn-shutdown').on('click', function(){		//--------------shutdown		
 		als.AlALTabletService.goToSleep ();			//Put the tablet in sleep mode (standby mode).	
 		als.AlALSystem.shutdown();	
@@ -243,18 +240,12 @@ $(function(){
         if(document.getElementById('radioSafeguard').checked) 
 			als.AlAutonomousLife.setState("safeguard");		//freezing mode
 	
-    });
+    });	
 	$('#btn-test1').on('click', function(){//for test
         console.log('[test]');
         
 
 		//als.AlLeds.fadeRGB("FaceLeds","yellow",0.0); //face leds to yellow,red,blue,green.white			
-		//als.ALAutonomousLife.setState("disabled"); 		//put the pepper in sleep mode
-		//als.ALAutonomousLife.setState("solitary");		//normal life
-		//als.ALAutonomousLife.setState("interactive");		//i don't know :\
-		//als.ALAutonomousLife.setState("safeguard");		//freezing mode
-
-		
 
     });	
 //-----------------------------------------------button movment function-----------------------------------------------
@@ -271,8 +262,7 @@ $(function(){
 	function mouseUpF() {			//on release Forward button
 		console.log('[Stop]');		
 		als.AlMotion.move(0.0,0.0,0.0);
-	}
-	
+	}	
 	//-----------Move Back-----------
 	document.getElementById("btn-backward").onmousedown = function() {mouseDownB()};
 	document.getElementById("btn-backward").onmouseup = function() {mouseUpB()};
@@ -286,7 +276,6 @@ $(function(){
 		console.log('[Stop]');		
 		als.AlMotion.move(0.0,0.0,0.0);
 	}
-
 	//-----------Move To Left-----------
 	document.getElementById("btn-left").onmousedown = function() {mouseDownL()};
 	document.getElementById("btn-left").onmouseup = function() {mouseUpL()};
@@ -300,8 +289,6 @@ $(function(){
 		console.log('[Stop]');		
 		als.AlMotion.move(0.0,0.0,0.0);
 	}	
-	
-
 	//-----------Move to Right-----------
 	document.getElementById("btn-right").onmousedown = function() {mouseDownR()};
 	document.getElementById("btn-right").onmouseup = function() {mouseUpR()};
@@ -352,6 +339,7 @@ $(function(){
 		//als.AlALTabletService.showWebview("http://198.18.0.1/apps/boot-config/preloading_dialog.html"); 
 		als.AlALTabletService.showWebview("http://198.18.0.1/apps/tablettest-a12269/Url_Page.jpg");
     });	
+	
 	//--------------------------------------color of pepper-----------
 	$('#btn-red').on('click', function(){
 		console.log('[Color Red]');	
@@ -379,7 +367,7 @@ $(function(){
 		TextBox = $('#TextBox').val();
 				console.log(TextBox);	
 			als.AlTextToSpeech.setLanguage('German')	
-//als.AlTextToSpeech.setLanguage('English')											   
+//als.AlTextToSpeech.setLanguage('English')				
         if(als.AlAnimatedSpeech) als.AlAnimatedSpeech.say(TextBox);//animation say-> read the text box
 		document.getElementById("TextBox").value = "";
 	}
@@ -398,4 +386,5 @@ $(function(){
 		})
 			
     }, 1000); //every minute will check the level Battery
+
 	});

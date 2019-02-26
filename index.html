@@ -6,7 +6,7 @@
     <script src="libs/qimessaging/1.0/jquery.min.js"></script>
     <script src="libs/qimessaging/1.0/qimessaging.js"></script>
     <script src="js/pepper.js"></script>
-		<style>
+	<style>
 	.connect-btn {
     background-color: #4CAF50; /* Green */
     border: none;
@@ -17,7 +17,9 @@
     display: inline-block;
     font-size: 26px;
 }
-	</style> 
+	</style>
+	    <link rel="stylesheet" href="pep.css" />
+
  </head>
    <body>
   <table >
@@ -27,11 +29,13 @@
 
 			​
 				<input id="radioRobbie" type="radio" name="RadioIP" value="robbie"  checked = "true"  > Robbie 192.168.1.102<br> 
-				 <input id="radioPaula" type="radio" name="RadioIP" value="paula"> Paula  192.168.1.126<br>
+				<input id="radioPaula" type="radio" name="RadioIP" value="paula"> Paula  192.168.1.126<br>
 				<input id="radioIP" type="radio" name="RadioIP" value="other"> Other Ip address
 			
 			<input type="text" id="ip" placeholder="192.168.1.102" name="ip" autocomplete="on" ></input>
 			<button type="submit" id="connect-btn">Connect</button>
+			
+
 		</td>
 		<td style="text-align:center">
 			<label  id="lblBattery" background="Green" width="100px" value="00"></label>
@@ -51,12 +55,17 @@
 				Bright =
 				<label  id="lblBright"></label>
 				<input type="range" min="50" max="100" value="75" class="slider" id="myRangeBright">
-				
 			</div>
+						<div class="slidecontainer">
+				Webpages =
+				<input type="text" id="input-url" placeholder="https://google.com/" name="urls" width="500px" autocomplete="on" ></input>
+				<button type="button" id="btn-show-webpage">Show</button>
+			</div>
+				
 		</td>
 		<td>
 			<button type="program" id="btn-program">program</button>
-		</td>   
+		</td>
 	</tr>
 	<tr>
 		<td colspan="2">
@@ -75,13 +84,13 @@
 			<button type="button" id="btn-danke">Danke</button>
 			
 
-			</td>
+		</td>
 	</tr>
 	<tr>
 		<td colspan="2">
 			<button type="button" id="btn-aria">ARiA</button>
 			<button type="button" id="btn-stop">Stop</button>
-			<button type="button" id="btn-google">Google</button>
+			
 			<button type="button" id="btn-sleep">Sleep</button>
 			<button type="button" id="btn-restart">Restart</button>
 			<button type="button" id="btn-shutdown">Shut down</button>
@@ -130,6 +139,10 @@
 			<img src="img/wissjahr-logo-web.png" alt="Wissenschaftjahr Logo" style="width:130px;height:65px;">
 		</td>
 	</tr>	
+	
+
+	
+		
 	
 		
 	
