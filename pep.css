@@ -6,13 +6,14 @@
 .slider {
     -webkit-appearance: none;  /* Override default CSS styles */
     appearance: none;
-    width: 60%; /* Full-width */
+    width: 30%; /* Full-width */
     height: 10px; /* Specified height */
     background: #d3d3d3; /* Grey background */
     outline: none; /* Remove outline */
     opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
     -webkit-transition: .2s; /* 0.2 seconds transition on hover */
     transition: opacity .2s;
+	
 }
 
 /* Mouse-over effects */
@@ -26,15 +27,17 @@
     appearance: none;
     width: 20px; /* Set a specific slider handle width */
     height: 22px; /* Slider handle height */
-    background: #4CAF50; /* Green background */
+    background: #4c80af; /* Green background */
     cursor: pointer; /* Cursor on hover */
+
 }
 
 .slider::-moz-range-thumb {
     width: 20px; /* Set a specific slider handle width */
     height: 20px; /* Slider handle height */
-    background: #4CAF50; /* Green background */
+    background: #4c80af; /* Green background */
     cursor: pointer; /* Cursor on hover */
+	
 }
 
 .connect-btn {
@@ -48,7 +51,7 @@
     font-size: 26px;
 }
 
-.button {
+.buttonred {
   display: inline-block;
   border-radius: 4px;
   background-color: #f4511e;
@@ -63,14 +66,14 @@
   margin: 2px;
 }
 
-.button span {
+.buttonred span {
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
 }
 
-.button span:after {
+.buttonred span:after {
   content: '\00bb';
   position: absolute;
   opacity: 0;
@@ -79,11 +82,108 @@
   transition: 0.5s;
 }
 
-.button:hover span {
+.buttonred:hover span {
   padding-right: 5px;
 }
 
-.button:hover span:after {
+.buttonred:hover span:after {
   opacity: 1;
   right: 0;
+}
+
+.ipsegment{
+	padding: 10px;
+	
+}
+
+.ipconnect{
+	width: 25%;
+	float: left;
+}
+.stifness{
+	width: 30%;
+	float: left;
+}
+
+.connecttions{
+	with: 10%;
+	float: left;
+	margin: center;
+}
+
+.button {
+  background-color: white;
+  color: black;
+    border-radius: 4px;
+    font-size: 14px;
+  border: 2px solid #e7e7e7;
+    margin: 2px;
+	  padding: 6px;
+}
+
+.button:hover {background-color: #e7e7e7;}
+
+
+/* The container */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 16px;
+  width: 16px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+ 	top: 5px;
+	left: 5px;
+	width: 6px;
+	height: 6px;
+	border-radius: 30%;
+	background: white;
 }
