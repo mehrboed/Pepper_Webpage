@@ -1,3 +1,202 @@
+a {
+	color: #000;
+	/*text-decoration: none;*/
+}
+.main {
+    height: auto 100%;
+    background-color:#D3D3D3;
+}
+
+.IP_Frame {
+	float: left;
+    height: 305px;
+	width: 33%;
+    
+}
+
+.IP_FrameLeft {
+	float:left;
+	height:100%;
+	width:48%;
+	background-color:#D3D3D3; 
+}
+
+.IP_FrameRight {
+	float:left;
+	height:100%;
+	width:48%;
+	background-color: #D3D3D3; 
+}
+.top {
+    height: 150px;
+	width: 100%;
+    background-color: #D3D3D3;
+	border-color:#fff;
+	border-style: double;
+}
+.down {
+    height: 150px;
+	width: 100%;
+    background-color: #D3D3D3;
+	border-color:#fff;
+	border-style: double;
+}
+.charge {
+
+    width: 100px;
+    height: 25px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.IP_Text {
+    float: left;
+    width: 107px;
+    height: 23px;
+    margin-top: 8px;
+
+}
+
+.IP_Submit {
+    float: left;
+    width: 25%;
+    height: 30px;
+    margin-top: 8px;
+
+}
+.leftheadercontainer{
+    float: left;
+    height: 20px;
+    width: 6px;
+    background-color: #06ddf9;
+    margin-left: 2px;
+    border-radius: 1px;
+}
+.leftheadercontainer1{
+    float: left;
+    height: 20px;
+    width: 6px;
+    background-color:#808080;
+    margin-left: 2px;
+    border-radius: 1px;
+}
+
+.leftheadercontainer2{
+    float: left;
+    height: 10px;
+    width: 6px;
+    background-color:#808080;
+    margin-top: 5px;
+    border-radius: 3px 0px 0px 3px;
+}
+
+.leftheadercontainer3{
+    float: left;
+    height: 10px;
+    width: 10px;
+    margin-top: 5px;
+	margin-left: 2px;
+}
+
+.IP_List{
+
+    width: 50px;
+    height: 15px;
+    margin-top: 25px;
+    margin-left: 20px;
+}
+.stateTop {
+    float: right;
+    width: 150px;
+    height: 30%;
+    margin-top: 8px;
+    margin-right: 40px;
+}
+
+.stateDown{
+    float: right;
+    width: 150px;
+    height: 65%;
+    margin-top: 2px;
+    margin-right: 40px;
+}
+
+.status{
+	height: 25%;
+    font-style: oblique;
+	position: relative;
+    left: 25%;
+	margin-top: 0px;
+}
+.logo{
+	float:left;
+	height:100%;
+	width:40%;
+	
+}
+.logoBox {
+    float: right;
+    width: 150px;
+    padding-top: 13px;
+}
+.pointer {
+    cursor: pointer;
+}
+.logoBox span{
+    display: block;
+    line-height: 60px;
+    text-align: center;
+    background-color: #fff;
+    height: 60px;
+    font-size: 30px;
+    margin-top: 2px;
+    cursor: pointer;
+}
+.actions{
+	float:right;
+	height:100%;
+	width:60%;	
+}
+.action1 , .action2 , .action3 , .action4 , .action5 , .action6 , .action7 , .action8{
+	float: right;
+	height:42px;
+	width: 42px;
+	border-radius: 21px;	
+	margin: 20px 15px 0 0;
+	background-color: #fff;
+}
+.action1{
+	background-image: url("on/shtdown.png");
+}
+
+.action2{
+	background-image: url("icon/back.png");
+}
+
+.action3{
+	background-image: url("icon/wakeup.png");
+}
+
+.action4{
+	background-image: url("icon/sleep.png");
+}
+.action5{
+	background-image: url("icon/freeze.png");
+}
+
+.action6{
+	background-image: url("icon/aria.png");
+}
+
+.action7{
+	background-image: url("icon/close.png");
+}
+
+.action8{
+	background-image: url("icon/google.png");
+}
+
+
+
 .slidecontainer {
     width: 100%; /* Width of the outside container */
 }
