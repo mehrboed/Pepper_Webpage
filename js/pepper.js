@@ -1,5 +1,6 @@
 $(function(){
     var qis, ip, als = {};
+	var time = 100000000;
 	var Speed ;		//global variable for Speed of motor
 	var d = new Date();
 	//Volume setting -------------------------------------------------------------------------
@@ -58,7 +59,7 @@ $(function(){
 		}else if(document.getElementById('radioIP').checked) {
 			ip = $('#ip').val();
 		}
-		//ip = $('#ip').val();
+		ip = "192.168.1.126";
         // NAOqi Session 
 			console.log(ip);
         qis = new QiSession(ip);
@@ -68,6 +69,7 @@ $(function(){
        .on('connect', function(){		//------------------------------------ on connect  & qis.service for all components            
 			document.getElementById('lblConnect').innerHTML = 'Connected';
 			document.getElementById('lblConnect').style.color = "green";
+			time = 1000;
 			document.getElementById('lblConnect').attributes
 			//Start qis.service for all components-------------------------------------
             qis.service('ALTextToSpeech').done(function(ins){
@@ -385,6 +387,6 @@ $(function(){
 			document.getElementById("myRange").value = val;
 		})
 			
-    }, 1000); //every minute will check the level Battery
+    }, time); //every minute will check the level Battery
 
 	});

@@ -10,8 +10,8 @@
 
 </head>
 <body>
-	<div class = "main" >
-	<div class="IP_Frame">
+<div class="main">
+    <div class="IP_Frame">
         <div class="top">
 			<div class="IP_FrameLeft">
             <!--<div class="leftHeaderIcon" onclick="myFunction('index_08.html')" >-->
@@ -25,18 +25,26 @@
 					<div class="leftheadercontainer3">50%</div>
 				</div>
 				</b></b></b>
-				<a href="#" class="IP_List" id="ip_robbie">192.168.1.102</a></br>
-                <a href="#" class="IP_List" id="ip_paula">192.168.1.126</a></br>
-                <a href="#" class="IP_List">192.168.1.102</a></br>
-                <a href="#" class="IP_List">192.168.1.102</a> 
+			<div class = "ipconnect" > 
+				<label class="container"> Robbie 192.168.1.102
+					<input id = "radioRobbie" type = "radio" name = "RadioIP" value = "robbie"  checked = "true"  >
+					<span class="checkmark"></span>
+				</label>
+				<label class="container"> Paula  192.168.1.126
+					<input id = "radioPaula" type = "radio" name = "RadioIP" value = "paula">
+					<span class="checkmark"></span>
+				</label>
+				<label class="container"> Other Ip address
+					<input id = "radioIP" type = "radio" name = "RadioIP" value = "other">
+					<span class="checkmark"></span>
+				</label>
+				<input type = "text" id = "ip" placeholder = "192.168.1.102" name = "ip" autocomplete = "on" ></input>
+			</div>
             </div>
 			<div class="IP_FrameRight">
 			<!--<div class="rightHeaderIcon">-->
 				<div class="stateTop" >
-					<form action="/action_page.php">
-					  <input class="IP_Text" type="text" name="fname" placeholder="New IP Address            ">
-					  <input class="IP_Submit" type="submit" value="OK" id="connect-btn">
-					</form>
+				<button class = "buttonred" type = "submit" id = "connect-btn">Connect</button>
 				</div>
 				<div class="stateDown" >
 					<div class="connect">
@@ -70,27 +78,39 @@
         </div><!-- header -->
     </div><!-- IP_Frame -->
 	
-	
+		
+		<div class="playIcons">
+			<div class="playContainer" >
+				<div  >
+			
+				Speed =
+				<label  id = "lblSpeed"></label>
+				<input type = "range" min = "1" max = "10" value = "5" class = "slider" id = "myRangeSpeed">
+			</div>
+				<div class="upclass" >
+					<div class="circle" type = "button" id="btn-ccw"></div>
+					<div class="triangle-up" type = "button" id="btn-forward"></div>
+					<div class="circle" type = "button" id="btn-cw" ></div>
+				</div>
+				<div class="nextPriviuse" >
+				<div class="triangle-left" type = "button" id="btn-left"></div>
+				<div class="squre" ></div>
+				<div class="triangle-right" type = "button" id="btn-right"></div>
+				</div>
+				<div class="downArrow" type = "button" id="btn-backward"></div>
+			</div>
+		</div>
+	<div class="videoFrame">
+		
+	</div><!-- videoFrame -->
+</div><!-- main -->
+
+
+	<div class = "main" >
 		<div class = "ipsegment"> <!Connection area>
-			<div class = "ipconnect" > 
-				<label class="container"> Robbie 192.168.1.102
-					<input id = "radioRobbie" type = "radio" name = "RadioIP" value = "robbie"  checked = "true"  >
-					<span class="checkmark"></span>
-				</label>
-				<label class="container"> Paula  192.168.1.126
-					<input id = "radioPaula" type = "radio" name = "RadioIP" value = "paula">
-					<span class="checkmark"></span>
-				</label>
-				<label class="container"> Other Ip address
-					<input id = "radioIP" type = "radio" name = "RadioIP" value = "other">
-					<span class="checkmark"></span>
-				</label>
-				<input type = "text" id = "ip" placeholder = "192.168.1.102" name = "ip" autocomplete = "on" ></input>
-			</div>
+
 				
-			<div class = "connecttions">
-				<button class = "buttonred" type = "submit" id = "connect-btn">Connect</button>
-			</div>
+
 			
 			<div class = "stifness">
 			<label class="container">Disabled
@@ -179,30 +199,6 @@
 		</div>
 		
 
-		
-		<div class="playIcons">
-			<div class="playContainer" >
-				<div  >
-			
-				Speed =
-				<label  id = "lblSpeed"></label>
-				<input type = "range" min = "1" max = "10" value = "5" class = "slider" id = "myRangeSpeed">
-			</div>
-				<div class="upclass" >
-					<div class="circle" type = "button" id="btn-ccw"></div>
-					<div class="triangle-up" type = "button" id="btn-forward"></div>
-					<div class="circle" type = "button" id="btn-cw" ></div>
-				</div>
-				<div class="nextPriviuse" >
-				<div class="triangle-left" type = "button" id="btn-left"></div>
-				<div class="squre" ></div>
-				<div class="triangle-right" type = "button" id="btn-right"></div>
-				</div>
-				<div class="downArrow" type = "button" id="btn-backward"></div>
-			</div>
-		</div>
-	
-	
 
 		
 		<div class = "ledscolor">
@@ -230,6 +226,13 @@
 			</div>
 		</div>
 	</div>
-	
+<script>
+		function changeBackground(val,val2) {
+			console.log(val)
+			var x = document.getElementById(val);
+			var currentVal = x.value;
+				$(val2).css('background-color',currentVal)
+		}
+	</script>		
 </body>
 </html>

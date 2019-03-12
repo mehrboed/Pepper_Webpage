@@ -151,6 +151,16 @@ a {
     margin-top: 2px;
     cursor: pointer;
 }
+
+
+
+.connect{
+	float: right;
+    width: 150px;
+	height: 80%;
+	background-color: #06ddf9;
+
+}
 .actions{
 	float:right;
 	height:100%;
@@ -298,6 +308,7 @@ a {
 .ipconnect{
 	width: 25%;
 	float: left;
+	padding: 10px;
 }
 .stifness{
 	width: 30%;
@@ -385,6 +396,16 @@ a {
 	height: 6px;
 	border-radius: 30%;
 	background: white;
+}
+
+
+.videoFrame{
+    float: right;
+	height: 300px;
+	width: 33%;
+    background-color: #D3D3D3;
+	border-color:#fff;
+	border-style: double;
 }
 
 .playIcons{
