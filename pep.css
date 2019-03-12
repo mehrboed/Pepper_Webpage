@@ -187,3 +187,79 @@
 	border-radius: 30%;
 	background: white;
 }
+
+.playIcons{
+	float: right;
+	height: 300px;
+	width: 32.5%;
+    background-color: #D3D3D3;
+	border-color:#fff;
+	border-style: double;
+}
+
+.circle{
+    margin-left: 40px;
+    float: left;
+	cursor: pointer;
+
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    background-color: #fff;
+}
+.triangle-up {
+    margin-left: 40px;
+    cursor: pointer;
+    float: left;
+	width: 0;
+	height: 0;
+	border-left: 25px solid transparent;
+	border-right: 25px solid transparent;
+    border-bottom: 50px solid #fff;
+}
+.triangle-left {
+    margin-top: 40px;
+    margin-left: 40px;
+    cursor: pointer;
+    float: left;
+	width: 0;
+	height: 0;
+	border-top: 25px solid transparent;
+	border-bottom: 25px solid transparent;
+    border-right: 50px solid #fff;
+}
+.triangle-right {
+    margin-top: 40px;
+    margin-left: 40px;
+    cursor: pointer;
+    float: left;
+	width: 0;
+	height: 0;
+	border-top: 25px solid transparent;
+	border-bottom: 25px solid transparent;
+    border-left: 50px solid #fff;
+}
+.squre {
+    cursor: pointer;
+    margin-top: 40px;
+    margin-left: 40px;
+    float: left;
+    height: 50px;
+    width: 50px;
+    background-color: #fff;
+}
+.playContainer{
+    margin-left: 60px;
+    width: 300px;
+}
+.downArrow {
+    margin-top: 40px;
+    margin-left: 130px;
+    cursor: pointer;
+    float: left;
+	width: 0;
+	height: 0;
+	border-left: 25px solid transparent;
+	border-right: 25px solid transparent;
+    border-top: 50px solid #fff;
+}
