@@ -22,7 +22,7 @@
 					<div class="leftheadercontainer1"></div>
 					<div class="leftheadercontainer1"></div>
 					<div class="leftheadercontainer2"></div>
-					<div class="leftheadercontainer3">50%</div>
+					<div class="leftheadercontainer3"  id = "lblBattery" >00</div> 
 				</div>
 				</b></b></b>
 			<div class = "ipconnect" > 
@@ -49,7 +49,7 @@
 				<div class="stateDown" >
 					<div class="connect">
 						<h1 class="status">status</h1>
-						<h2 class="statusResult">connected</h2>
+						<h3 id = "lblConnect" class="statusResult"> Disconnected</h3>
 					</div>
 				</div>
             </div>
@@ -57,22 +57,23 @@
 		<div class="down">
             <div class="logo">
                 <div class="logoBox">
-					<span>LOGO</span>
-					<span>LOGO</span>
+					<img src = "img/logo_uni_siegen.jpg" alt = "University Logo" style = "width:200px;height:56px;">
+					<img src = "img/wissjahr-logo-web.png" alt = "Wissenschaftjahr Logo" style = "width:130px;height:65px;">
 				</div>
             </div>
+			
             <div class="actions" >
                 <div class="actionsTop">
-					<div class="action1 pointer" onclick="myFunction('index_08.html')"></div>
-					<div class="action2 pointer" onclick="myFunction('index_08.html')"></div>
-					<div class="action3 pointer" onclick="myFunction('index_08.html')"></div>
-					<div class="action4 pointer" onclick="myFunction('index_08.html')"></div>
+					<div class="action1 pointer" type = "button" id = "btn-shutdown"></div>
+					<div class="action2 pointer" type = "button" id = "btn-restart"></div>
+					<div class="action3 pointer" type = "button" id = "btn-wakeup"></div>
+					<div class="action4 pointer" type = "button" id = "btn-sleep"></div>
 				</div>
                 <div class="actionsDown">
-					<div class="action5 pointer" onclick="myFunction('index_08.html')"></div>
-					<div class="action6 pointer" onclick="myFunction('index_08.html')"></div>
-					<div class="action7 pointer" onclick="myFunction('index_08.html')"></div>
-					<div class="action8 pointer" onclick="myFunction('index_08.html')"></div>
+					<div class="action5 pointer" onclick="myFunction('freeze')"></div>
+					<div class="action6 pointer" type = "button" id = "btn-aria"></div>
+					<div class="action7 pointer" type = "button" id = "btn-stop"></div>
+					<div class="action8 pointer" type = "button" id = "btn-show-google"></div>
 				</div>
             </div>
         </div><!-- header -->
@@ -101,7 +102,26 @@
 			</div>
 		</div>
 	<div class="videoFrame">
-		
+					<div class = "stifness">
+				<label  id = "lblTemp" width = "100px" value = "Normal"></label>
+				<label class="container">Disabled
+					<input id = "radioDisabled" type = "radio" name = "AutonomousLife" value = "disabled">
+					<span class="checkmark"></span>
+				</label>
+				<label class="container">Solitary
+					<input id = "radioSolitary" type = "radio" name = "AutonomousLife" value = "solitary">
+					<span class="checkmark"></span>
+				</label>
+				<label class="container">Interactive
+					<input id = "radioInteractive" type = "radio" name = "AutonomousLife" value = "interactive">
+					<span class="checkmark"></span>
+				</label>
+				<label class="container">Safeguard
+					<input id = "radioSafeguard" type = "radio" name = "AutonomousLife" value = "safeguard">
+					<span class="checkmark"></span>
+				</label>
+				<button type = "button" id = "btn-execute">Execute</button>
+			</div>
 	</div><!-- videoFrame -->
 </div><!-- main -->
 
@@ -109,34 +129,9 @@
 	<div class = "main" >
 		<div class = "ipsegment"> <!Connection area>
 
-				
 
-			
-			<div class = "stifness">
-			<label class="container">Disabled
-				<input id = "radioDisabled" type = "radio" name = "AutonomousLife" value = "disabled">
-				<span class="checkmark"></span>
-			</label>
-			<label class="container">Solitary
-				<input id = "radioSolitary" type = "radio" name = "AutonomousLife" value = "solitary">
-				<span class="checkmark"></span>
-			</label>
-			<label class="container">Interactive
-				<input id = "radioInteractive" type = "radio" name = "AutonomousLife" value = "interactive">
-				<span class="checkmark"></span>
-			</label>
-			<label class="container">Safeguard
-				<input id = "radioSafeguard" type = "radio" name = "AutonomousLife" value = "safeguard">
-				<span class="checkmark"></span>
-			</label>
-
-				<button type = "button" id = "btn-execute">Execute</button>
-			</div>
 			
 			<div class = "statussegment" >
-				<label  id = "lblBattery" background = "Green" width = "100px" value = "00"> 56 </label>
-				<label  id = "lblTemp" width = "100px" value = "Normal"></label>
-				<label  id = "lblConnect">Disconnected</label>
 			</div>
 		</div>
 		<div class = "slidbarsbuttun" >
@@ -185,19 +180,6 @@
 		
 
 		
-		<div class = "power">
-			<div colspan = "2">
-				<button type = "button" id = "btn-aria">ARiA</button>
-				<button type = "button" id = "btn-stop">Stop</button>
-				<button type = "button" id = "btn-sleep">Sleep</button>
-				<button type = "button" id = "btn-restart">Restart</button>
-				<button type = "button" id = "btn-shutdown">Shut down</button>
-				<button type = "button" id = "btn-wakeup">Wake Up</button>
-
-			</div>
-
-		</div>
-		
 
 
 		
@@ -218,13 +200,7 @@
 			<button type = "button" id = "btn-show-webpage">Show</button>
 		</div>
 		
-		<!Logo>
-		<div class = "logos" style = "text-align:center">
-			<div valign = "bottom" height = "100px">
-				<img src = "img/logo_uni_siegen.jpg" alt = "University Logo" style = "width:200px;height:56px;">
-				<img src = "img/wissjahr-logo-web.png" alt = "Wissenschaftjahr Logo" style = "width:130px;height:65px;">
-			</div>
-		</div>
+
 	</div>
 <script>
 		function changeBackground(val,val2) {

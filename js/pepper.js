@@ -1,6 +1,5 @@
 $(function(){
     var qis, ip, als = {};
-	var time = 100000000;
 	var Speed ;		//global variable for Speed of motor
 	var d = new Date();
 	//Volume setting -------------------------------------------------------------------------
@@ -69,7 +68,6 @@ $(function(){
        .on('connect', function(){		//------------------------------------ on connect  & qis.service for all components            
 			document.getElementById('lblConnect').innerHTML = 'Connected';
 			document.getElementById('lblConnect').style.color = "green";
-			time = 1000;
 			document.getElementById('lblConnect').attributes
 			//Start qis.service for all components-------------------------------------
             qis.service('ALTextToSpeech').done(function(ins){
@@ -203,6 +201,12 @@ $(function(){
 	$('#btn-show-webpage').on('click', function(){		//--------------show the web
 		als.AlALTabletService.showWebview (); 			//show web page	
 		var URLs = $('#input-url').val();
+		als.AlALTabletService.loadUrl(URLs);  
+		
+    });	
+	$('#btn-show-google').on('click', function(){		//--------------show the web
+		als.AlALTabletService.showWebview (); 			//show web page	
+		var URLs = "https://google.com";
 		als.AlALTabletService.loadUrl(URLs);  
 		
     });	
@@ -387,6 +391,6 @@ $(function(){
 			document.getElementById("myRange").value = val;
 		})
 			
-    }, time); //every minute will check the level Battery
+    }, 1000); //every minute will check the level Battery
 
 	});
