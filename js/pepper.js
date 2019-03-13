@@ -58,7 +58,7 @@ $(function(){
 		}else if(document.getElementById('radioIP').checked) {
 			ip = $('#ip').val();
 		}
-		ip = "192.168.1.126";
+		//ip = "192.168.1.126";
         // NAOqi Session 
 			console.log(ip);
         qis = new QiSession(ip);
