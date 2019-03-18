@@ -2,6 +2,9 @@ $(function(){
     var qis, ip, als = {};
 	var Speed ;		//global variable for Speed of motor
 	var d = new Date();
+	var AutonomousBlinking = new Boolean(true);
+	var intial = new Boolean(false);
+	var counter = "0";
 	//Volume setting -------------------------------------------------------------------------
 		var sliderVolume = document.getElementById("myRange");
 		var outputVolume = document.getElementById("lblVolume");
@@ -109,6 +112,17 @@ $(function(){
             qis.service('ALSystem').done(function(ins){ 
                 als.AlALSystem  =  ins ; 
             });
+			//Test area of more API
+			qis.service('ALAutonomousBlinking').done(function(ins){ 
+                als.AlAutonomousBlinking  =  ins ; 
+            });
+			
+			
+			
+
+			
+			
+			//end of the test
         })
         .on('disconnect', function(){	// ------------------------------------on disconnect
 
@@ -125,71 +139,137 @@ $(function(){
 			//alert ( '[Connection error]' );
         });
     });
-    //----------Buttons function-----------------------------------------------------------------
+    //---------------------------------------------------------------------------Buttons function
    /* $('#test-btn').on('click', function(){
         console.log('[say the Text]');
 		TextBox = $('#TextBox').val();
         if(als.AlTextToSpeech) als.AlTextToSpeech.say(TextBox);
     });*/
+	//-------------------------------------------------------------------------language checkbox setting------------------------
+	$('#lang').click(function(){
+		if($(this).is(':checked')){
+			als.AlTextToSpeech.setLanguage('German');
+		} else {
+			als.AlTextToSpeech.setLanguage('English');
+		}
+	});
+	//-------------------------------------------------------------------------buttons---------------------------------------------
 	$('#btn-chao').on('click', function(){  //-------------Say Goodbye
         console.log('[Tschuss]');
-		switch (Math.floor((Math.random() * 5))){
-        case 0: als.AlTextToSpeech.say('Tschüss');break;
-		case 1: als.AlTextToSpeech.say('Aufwiedersehen');break;
-		case 2: als.AlTextToSpeech.say('Servus');break;
-		case 3: als.AlTextToSpeech.say('Wiedersehen!');break;
-		case 4: als.AlTextToSpeech.say('schön tag noch!');break;
-		default:console.log('[Tschuss=> Error ]');
+		if ( document.getElementById('lang').checked){ 
+			switch (Math.floor((Math.random() * 5))){
+				case 0: als.AlTextToSpeech.say('Tschüss');break;
+				case 1: als.AlTextToSpeech.say('Aufwiedersehen');break;
+				case 2: als.AlTextToSpeech.say('Servus');break;
+				case 3: als.AlTextToSpeech.say('Wiedersehen!');break;
+				case 4: als.AlTextToSpeech.say('schön tag noch!');break;
+				default:console.log('[Tschuss=> Error ]');
+			}
+		}else{
+			switch (Math.floor((Math.random() * 5))){
+				case 0: als.AlTextToSpeech.say('Bye');break;
+				case 1: als.AlTextToSpeech.say('Good bye!');break;
+				case 2: als.AlTextToSpeech.say('see you!');break;
+				case 3: als.AlTextToSpeech.say('bye bye!');break;
+				case 4: als.AlTextToSpeech.say('Have a nice day');break;
+				default:console.log('[good bye=> Error ]');
+			}			
 		}
     });
 	$('#btn-hallo').on('click', function(){//-------------Say Hello
         console.log('[Hallo]');
-		switch (Math.floor((Math.random() * 5))){
-        case 0: als.AlTextToSpeech.say('Hallo ');break;
-		case 1: als.AlTextToSpeech.say('hi');break;
-		case 2: als.AlTextToSpeech.say('Servus');break;
-		case 3: als.AlTextToSpeech.say('Hallo, Leute!');break;
-		case 4: console.log(d.getHours());
-			var x=d.getHours();
-				if (x<10)
-					als.AlTextToSpeech.say('Guten Morgen');
-				else if(5<x<17)
-					als.AlTextToSpeech.say('Guten Tag');
-				else 
-					als.AlTextToSpeech.say('Guten Abend');
+		if ( document.getElementById('lang').checked){ 
+			switch (Math.floor((Math.random() * 5))){
+				case 0: als.AlTextToSpeech.say('Hallo ');break;
+				case 1: als.AlTextToSpeech.say('hi');break;
+				case 2: als.AlTextToSpeech.say('Servus');break;
+				case 3: als.AlTextToSpeech.say('Hallo, Leute!');break;
+				case 4: console.log(d.getHours());
+					var x=d.getHours();
+						if (x<10)
+							als.AlTextToSpeech.say('Guten Morgen');
+						else if(5<x<17)
+							als.AlTextToSpeech.say('Guten Tag');
+						else 
+							als.AlTextToSpeech.say('Guten Abend');
 
-			default:console.log('[Hallo=> Error ]');break;
+					default:console.log('[Hallo=> Error ]');break;
+					}
+		}else{
+			switch (Math.floor((Math.random() * 5))){
+				case 0: als.AlTextToSpeech.say('Hello ');break;
+				case 1: als.AlTextToSpeech.say('hi');break;
+				case 2: als.AlTextToSpeech.say('holla');break;
+				case 3: als.AlTextToSpeech.say('Hi, there!');break;
+				case 4: console.log(d.getHours());
+					var x=d.getHours();
+						if (x<10)
+							als.AlTextToSpeech.say('Good Morning');
+						else if(5<x<17)
+							als.AlTextToSpeech.say('Hello');
+						else 
+							als.AlTextToSpeech.say('Good evening');
+					break;
+					default:console.log('[Hallo=> Error ]');break;
 			}
+			
+		}
     });
 	$('#btn-wiegehts').on('click', function(){//-------------How are you
         console.log('[Wie gehts Ihnenen]');
-        if(als.AlTextToSpeech) als.AlTextToSpeech.say('Wie gehts Ihnenen');
+		if ( document.getElementById('lang').checked){ 
+			als.AlTextToSpeech.say('Wie gehts Ihnenen');
+		}else{
+			switch (Math.floor((Math.random() * 2))){
+				case 0: als.AlTextToSpeech.say('How are you? ');break;
+				case 1: als.AlTextToSpeech.say('How are you doing? ');break;
+			}
+		}
     });
 	$('#btn-danke').on('click', function(){//-------------Thanks
         console.log('[Danke ]');
-		switch (Math.floor((Math.random() * 5))){
-        case 0: als.AlTextToSpeech.say('Danke ');break;
-		case 1: als.AlTextToSpeech.say('Danke Sehr');break;
-		case 2: als.AlTextToSpeech.say('Vielen Dank!');break;
-		case 3: als.AlTextToSpeech.say('Recht schönen Dank!');break;
-		case 4: als.AlTextToSpeech.say('dankeschön');break;
-		default:console.log('[Danke=> Error ]');
+		if ( document.getElementById('lang').checked){ 
+			switch (Math.floor((Math.random() * 5))){
+				case 0: als.AlTextToSpeech.say('Danke ');break;
+				case 1: als.AlTextToSpeech.say('Danke Sehr');break;
+				case 2: als.AlTextToSpeech.say('Vielen Dank!');break;
+				case 3: als.AlTextToSpeech.say('Recht schönen Dank!');break;
+				case 4: als.AlTextToSpeech.say('dankeschön');break;
+				default:console.log('[Danke=> Error ]');
+			}
+		}else{
+			switch (Math.floor((Math.random() * 5))){
+				case 0: als.AlTextToSpeech.say('Thanks ');break;
+				case 1: als.AlTextToSpeech.say('Thank so much');break;
+				case 2: als.AlTextToSpeech.say('Thanks a lot');break;
+				case 3: als.AlTextToSpeech.say('Appreciated');break;
+				case 4: als.AlTextToSpeech.say('i am all gratitude');break;
+				default:console.log('[merci=> Error ]');
+			}
 		}
     });
 	$('#btn-freue').on('click', function(){//-------------My pleasure
         console.log('[Freue]');
-		switch (Math.floor((Math.random() * 2))){
-        case 0: als.AlTextToSpeech.say('Ich freue mich, dich zu sehen ');break;
-		case 1: als.AlTextToSpeech.say('Freut mich, dich kennenzulernen');break;
-		default:console.log('[Freue=> Error ]');
+		if ( document.getElementById('lang').checked){ 
+			switch (Math.floor((Math.random() * 2))){
+				case 0: als.AlTextToSpeech.say('Ich freue mich, dich zu sehen ');break;
+				case 1: als.AlTextToSpeech.say('Freut mich, dich kennenzulernen');break;
+				default:console.log('[Freue=> Error ]');
+			}
+		}else{
+			switch (Math.floor((Math.random() * 2))){
+				case 0: als.AlTextToSpeech.say(' Im glad to see you ');break;
+				case 1: als.AlTextToSpeech.say('I am glad to have seen you');break;
+				default:console.log('[Freue=> Error ]');
+		}
 		}
 
     });	
 	$('#btn-aria').on('click', function(){			//--------------Run ARiA behavior-------------
 
-			als.alALBehaviorManager.stopAllBehaviors()
-			als.alALBehaviorManager.runBehavior("webapi/behavior_1");
-			console.log('[run ARiA]');
+		als.alALBehaviorManager.stopAllBehaviors()
+		als.alALBehaviorManager.runBehavior("webapi/behavior_1");
+		console.log('[run ARiA]');
 		
     });	
 	$('#btn-stop').on('click', function(){  		//--------------closing all behaviors and tablet
@@ -198,6 +278,11 @@ $(function(){
 		als.alALBehaviorManager.stopAllBehaviors()
 
     });
+	$('#btn-bootconfig').on('click', function(){  		//-------------- boot-config
+        console.log('[boot-config]');
+		als.AlALTabletService.hideWebview()
+		als.alALBehaviorManager.runBehavior("boot-config/.");
+	});
 	$('#btn-show-webpage').on('click', function(){		//--------------show the web
 		als.AlALTabletService.showWebview (); 			//show web page	
 		var URLs = $('#input-url').val();
@@ -255,14 +340,31 @@ $(function(){
 
     });	
 //-----------------------------------------------button movment function-----------------------------------------------
+	$('#btn-stop').on('click', function(){// stop movmentof pepper
+		console.log('[Stop]');
+		als.AlMotion.move(0.0,0.0,0.0);
+	});
 	
 	//-----------Move Forward-----------
 	document.getElementById("btn-forward").onmousedown = function() {mouseDownF()};
 	document.getElementById("btn-forward").onmouseup = function() {mouseUpF()};
 	function mouseDownF() {			//on click Forward button
 		console.log('[Forward]');		
-	if(Speed<0)						//if movment is in reverse then make it possitive
-		Speed=Speed*-1; 
+	if( Speed < 0)						//if movment is in reverse then make it possitive
+		Speed = Speed * -1; 
+	als.AlMotion.move(Speed,0.0,0.0);
+	}
+	function mouseUpF() {			//on release Forward button
+		console.log('[Stop]');		
+		als.AlMotion.move(0.0,0.0,0.0);
+	}
+	//-----------Move Forward-----------
+	document.getElementById("btn-forward").onmousedown = function() {mouseDownF()};
+	document.getElementById("btn-forward").onmouseup = function() {mouseUpF()};
+	function mouseDownF() {			//on click Forward button
+		console.log('[Forward]');		
+	if( Speed < 0)						//if movment is in reverse then make it possitive
+		Speed = Speed * -1; 
 	als.AlMotion.move(Speed,0.0,0.0);
 	}
 	function mouseUpF() {			//on release Forward button
@@ -289,7 +391,7 @@ $(function(){
         if(Speed<0)
 			Speed=Speed*-1;
 		console.log('[Left]');		
-       als.AlMotion.move(0.0,Speed,0.);
+        als.AlMotion.move(0.0,Speed,0.);
 	}
 	function mouseUpL() {			//on release button
 		console.log('[Stop]');		
@@ -302,7 +404,7 @@ $(function(){
 		if(Speed>0)
 			Speed=Speed*-1;
         console.log('[Right]');	
-		        console.log(Speed);			
+		console.log(Speed);			
         als.AlMotion.move(0.0,Speed,0.0);
 	}
 	function mouseUpR() {			//on release button
@@ -330,7 +432,7 @@ $(function(){
 		if(Speed>0)
 			Speed=Speed*-1;
         console.log('[Clockwise rotation]');
-			console.log(Speed);	
+		console.log(Speed);	
         als.AlMotion.move(0.0,0.0,Speed);
 	}
 	function mouseUpCW() {				//on release
@@ -346,7 +448,7 @@ $(function(){
 		als.AlALTabletService.showWebview("http://198.18.0.1/apps/tablettest-a12269/Url_Page.jpg");
     });	
 	
-	//--------------------------------------color of pepper-----------
+	//--------------------------------------color of pepper----------------------------------------------- LEDs --------------------
 	$('#btn-red').on('click', function(){
 		console.log('[Color Red]');	
 		als.AlLeds.fadeRGB("AllLeds","red",0.0); //set all leds to red
@@ -363,34 +465,84 @@ $(function(){
 		console.log('[Color Yellow]');	
 		als.AlLeds.fadeRGB("AllLeds","yellow",0.0); //set all leds to yellow
     });	
+	$('#btn-cyan').on('click', function(){
+		console.log('[Color cyan]');	
+		als.AlLeds.fadeRGB("AllLeds","cyan",0.0); //set all leds to cyan
+    });	
+	$('#btn-magenta').on('click', function(){
+		console.log('[Color magenta]');	
+		als.AlLeds.fadeRGB("AllLeds","magenta",0.0); //set all leds to magenta
+    });	
 	$('#btn-def').on('click', function(){
 		console.log('[Default Color]');	
 		als.AlLeds.reset("AllLeds"); 				//Set a LED or Group of LEDs to their default state.
+    });	
+	$('#btn-blinking').on('click', function(){
+		//als.AlAutonomousBlinking.isEnabled();
+		if(AutonomousBlinking){
+			als.AlAutonomousBlinking.setEnabled(false);
+			console.log('[AutonomousBlinking set off]');
+			AutonomousBlinking	= false;		
+		}else{
+			als.AlAutonomousBlinking.setEnabled(true);
+			console.log('[AutonomousBlinking set on]');	
+			AutonomousBlinking = true;
+		}
+    });	
+	$('#led-off').on('click', function(){
+		console.log('[turn leds off]');	
+		als.AlLeds.off("AllLeds"); 				//Set a LED or Group of LEDs to their default state.
+    });	
+		$('#led-on').on('click', function(){
+		console.log('[turn leds off]');	
+		als.AlLeds.on("AllLeds"); 				//Set a LED or Group of LEDs to their default state.
+    });	
+		$('#led-disco').on('click', function(){
+		console.log('[turn leds off]');	
+		als.AlLeds.randomEyes(10.0); 				//Set a LED or Group of LEDs to their default state.
+    });	
+	$('#led-circle').on('click', function(){
+		console.log('[turn leds off]');	
+		als.AlLeds.rasta(3.0); 				//Set a LED or Group of LEDs to their default state.
     });	
 	
 	function validate(e){//-----------speech text box area-----------
 		var text=e.target.value;
 		TextBox = $('#TextBox').val();
-				console.log(TextBox);	
-			als.AlTextToSpeech.setLanguage('German')	
-//als.AlTextToSpeech.setLanguage('English')				
+		console.log(TextBox);	
         if(als.AlAnimatedSpeech) als.AlAnimatedSpeech.say(TextBox);//animation say-> read the text box
 		document.getElementById("TextBox").value = "";
 	}
 
-	setInterval(function(){//-----------Timer for battery and check the connection-----------
+	setInterval(function(){//---------------------------------------------------------------------------------Timer for battery and check the connection-----------
 		//als.AlALTabletService.getBrightness().done(function(val){
 		als.AlAutonomousLife.getState().done(function(val){
 			document.getElementById('lblTemp').innerHTML = val;
 			})
-        als.AlALBattery.getBatteryCharge().done(function(val){
+        als.AlALBattery.getBatteryCharge().done(function(val){	//update battery level
             document.getElementById('lblBattery').innerHTML = val;
         	})
-		als.AlALAudioDevice.getOutputVolume().done(function(val){
+		als.AlALAudioDevice.getOutputVolume().done(function(val){  //update volume range
 			document.getElementById('lblVolume').innerHTML=val;
 			document.getElementById("myRange").value = val;
 		})
+		/*if (counter == "5"){
+			var robot = als.AlALSystem.robotName();
+			document.getElementById('robot_name').innerHTML = robot;
+			console.log(robot);
+			intial = true;
 			
+			
+		}else
+			counter ++;
+		
+		console.log(counter);
+		/*if(intial == false){
+			var robot = als.AlALSystem.robotName();
+			document.getElementById('robot_name').innerHTML = robot;
+			console.log(robot);
+			intial = true;
+		}*/
     }, 1000); //every minute will check the level Battery
 
 	});

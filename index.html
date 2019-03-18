@@ -48,8 +48,8 @@
 					</div>
 					<div class="stateDown" >
 						<div class="connect">
-							<h1 class="status">status</h1>
-							<h3 id = "lblConnect" class="statusResult"> Disconnected</h3>
+							<h1 id = "robot_name" class="status">Robot</h1>
+							<h3 id = "lblConnect" class="statusResult"> Disconn.</h3>
 						</div>
 					</div>
 				</div>
@@ -70,7 +70,7 @@
 						<div class="action4 pointer" type = "button" id = "btn-sleep"></div>
 					</div>
 					<div class="actionsDown">
-						<div class="action5 pointer" onclick="myFunction('freeze')"></div>
+						<div class="action5 pointer" type = "button" id = "btn-bootconfig"></div>
 						<div class="action6 pointer" type = "button" id = "btn-aria"></div>
 						<div class="action7 pointer" type = "button" id = "btn-stop"></div>
 						<div class="action8 pointer" type = "button" id = "btn-show-google"></div>
@@ -84,21 +84,23 @@
 				<div class="playContainer" >
 					<div class = "slidecontainer" >
 				
-					Speed =
-					<label  id = "lblSpeed"></label>
-					<input type = "range" min = "1" max = "10" value = "5" class = "slider" id = "myRangeSpeed">
-				</div>
+						Speed =
+						<label  id = "lblSpeed"></label>
+						<input type = "range" min = "1" max = "10" value = "5" class = "slider" id = "myRangeSpeed" >
+					</div>
 					<div class="upclass" >
 						<div class="circle" type = "button" id="btn-ccw"></div>
 						<div class="triangle-up" type = "button" id="btn-forward"></div>
 						<div class="circle" type = "button" id="btn-cw" ></div>
 					</div>
-					<div class="nextPriviuse" >
-					<div class="triangle-left" type = "button" id="btn-left"></div>
-					<div class="squre" ></div>
-					<div class="triangle-right" type = "button" id="btn-right"></div>
+					<div class="middleclass" >
+						<div class="triangle-left" type = "button" id="btn-left"></div>
+						<div class="squre" type = "button" id="btn-stop" ></div>
+						<div class="triangle-right" type = "button" id="btn-right"></div>
 					</div>
-					<div class="downArrow" type = "button" id="btn-backward"></div>
+					<div class = "downclass">
+						<div class="downArrow" type = "button" id="btn-backward"></div>
+					</div>
 				</div>
 			</div>
 		<div class="videoFrame">
@@ -128,7 +130,7 @@
 					<div class="slidecontainer">
 						Bright =
 						<label  id = "lblBright"></label>
-						<input type = "range" min = "50" max = "100" value = "75" class = "slider" id = "myRangeBright">
+						<input type = "range" min = "50" max = "100" value = "75" class = "slider" id = "myRangeBright" style = "width: 40%;">
 					</div>
 
 		
@@ -189,43 +191,50 @@
 						<div class="point top-left-point2" ></div>
 						<div class="circleContainer-2" ></div>
 					</div>
-					<div class="IC-squre-2" > 
-						<input onchange="changeBackground('IC-squre-2','.IC-squre-2')" type="color" id="IC-squre-2" value="#ff0080" ></input>
+					<div class="IC-squre" > 
+						<input onchange="changeBackground('IC-squre','.IC-squre')" type="color" id="IC-squre-2" value="#ff0080" ></input>
 					</div>
 			</div>
 			<div class="blue_buttons">
 				<span class="blue_button" type = "button" id = "btn-green">G</span>
 				<span class="blue_button" type = "button" id = "btn-blue">B</span>
-				<span class="blue_button">M</span>
+				<span class="blue_button" type = "button" id = "btn-magenta">M</span>
 				<span class="blue_button" type = "button" id = "btn-def">W</span>
-				<span class="blue_button">X</span>
+				<span class="blue_button" type = "button" id = "btn-cyan">C</span>
 				<span class="blue_button" type = "button" id = "btn-red">R</span>
-				<span class="blue_button" type = "button" id = "btn-yellow">Y</span>		
+				<span class="blue_button" type = "button" id = "btn-yellow">Y</span>
+				<span class="blue_button" type = "button" id = "btn-blinking" style = "font-size: 8px; background-color: gray; ">blinking</span>					
 			</div>
 			<div class="feeling_links">  
-				<div class="feeling_link">happy</div>
-				<div class="feeling_link">disco</div>
-				<div class="feeling_link">love</div>
-				<div class="feeling_link">angry</div>
+				<div class="feeling_link">happy</div>	
+				<div class="feeling_link">love</div>	
 				<div class="feeling_link">laugh</div>
-				<div class="feeling_link">circle</div>
 				<div class="feeling_link">flash</div>
 				<div class="feeling_link">nasty</div>
 				<div class="feeling_link">catious</div>
 				<div class="feeling_link">thinking</div>
 				<div class="feeling_link">blink</div>
-				<div class="feeling_link">off</div>	
+				<div class="feeling_link" type = "button" style = "cursor: pointer;" id = "led-circle">Circle</div>
+				<div class="feeling_link" type = "button" style = "cursor: pointer;" id = "led-disco">Disco</div>
+				<div class="feeling_link" type = "button" style = "cursor: pointer;" id = "led-on">On</div>
+				<div class="feeling_link" type = "button" style = "cursor: pointer;" id = "led-off">Off</div>	
 			</div>
 		 </div><!-- feeling -->
 		 
-		<div class="playReserve">
-			<div class="playList">
-				<div class="textBoxClass">
-					<form class="lan">
-						<input type="radio" name="lang" value="en" checked />En
-						<input type="radio" name="lang" value="de" />De
-					</form >
-					<textarea class="textarea" spellcheck = "false" placeholder="Sag mal!" type = "text" id = "TextBox" ></textarea>
+		<div class = "playReserve">
+			<div class = "playList">
+				<div class = "textBoxClass">English
+					<label class="switch">
+						<input id = "lang" name = "lang" type = "checkbox" checked>
+						<span class = "slider2 round"></span>
+					</label>
+					<!form class="lan">
+						<!input type="radio" name="lang" value="en" checked /><!--En-->
+						<!input type="radio" name="lang" value="de" /><!--De-->
+					<!/form >
+					Deutsch
+					
+					<textarea class="textarea" spellcheck = "false" placeholder="Sag mal!" type = "text" id = "TextBox" style = "margin-top: 5px;" ></textarea>
 					
 				</div>
 				<div class="submitBoxClass">
