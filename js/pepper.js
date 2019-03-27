@@ -303,6 +303,14 @@ $(function(){
 			case 117:console.log('[test]');
 		}
 	}
+	$('#logoUni_show').on('click', function(){
+		als.ALTabletService.showImage();
+		console.log('[show logo of uni on the tablet]');	
+    });	
+	$('#logoWSJ_show').on('click', function(){
+		als.ALTabletService.showImage();
+		console.log('[show logo of uni on the tablet]');	
+    });	
 	$('#btn-shutdown').on('click', function(){		//--------------shutdown		
 		als.AlALTabletService.goToSleep ();			//Put the tablet in sleep mode (standby mode).	
 		als.AlALSystem.shutdown();	
@@ -575,7 +583,7 @@ $(function(){
 		
 		//als.AlALTabletService.getBrightness().done(function(val){
 		als.AlAutonomousLife.getState().done(function(val){
-			document.getElementById('lblTemp').innerHTML = val;
+			document.getElementById('lblState').innerHTML = val;
 			})
         als.AlALBattery.getBatteryCharge().done(function(val){	//update battery level
             document.getElementById('lblBattery').innerHTML = val;
