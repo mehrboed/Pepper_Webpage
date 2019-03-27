@@ -63,19 +63,12 @@ a {
     margin-top: 8px;
 
 }
-.leftheadercontainer{
-    float: left;
-    height: 20px;
-    width: 6px;
-    background-color: #06ddf9;
-    margin-left: 2px;
-    border-radius: 1px;
-}
+
 .leftheadercontainer1{
     float: left;
     height: 20px;
     width: 6px;
-    background-color:#808080;
+    background-color:#06ddf9;
     margin-left: 2px;
     border-radius: 1px;
 }
@@ -908,3 +901,13 @@ input:checked + .slider2:before {
 }
 
 
+.circle,.triangle-up,.triangle-left,.triangle-down,.triangle-right,.square{
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+.circle:hover,.triangle-up:hover,.triangle-left:hover,.triangle-down:hover,.triangle-right:hover,.square:hover{
+	background-color: #4CAF50; /* Green */
+	color: white;
+	
+}

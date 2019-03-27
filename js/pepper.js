@@ -5,6 +5,7 @@ $(function(){
 	var AutonomousBlinking = new Boolean(true);
 	var intial = new Boolean(false);
 	var counter = "0";
+	var Battery = "0";
 	//Volume setting -------------------------------------------------------------------------
 		var sliderVolume = document.getElementById("myRange");
 		var outputVolume = document.getElementById("lblVolume");
@@ -71,7 +72,7 @@ $(function(){
        .on('connect', function(){		//------------------------------------ on connect  & qis.service for all components            
 			document.getElementById('lblConnect').innerHTML = 'Connected';
 			document.getElementById('lblConnect').style.color = "green";
-			document.getElementById('lblConnect').attributes
+			document.getElementById('lblConnect').attributes;
 			//Start qis.service for all components-------------------------------------
             qis.service('ALTextToSpeech').done(function(ins){
                 als.AlTextToSpeech = ins;
@@ -513,15 +514,76 @@ $(function(){
         if(als.AlAnimatedSpeech) als.AlAnimatedSpeech.say(TextBox);//animation say-> read the text box
 		document.getElementById("TextBox").value = "";
 	}
+	
+	function Battery_changelevel(para){
+
+		if ( para <= 10 ){
+			document.getElementById("battary_container_1").style.backgroundColor = "red";
+			document.getElementById("battary_container_2").style.backgroundColor = "#808080";
+			document.getElementById("battary_container_3").style.backgroundColor = "#808080";
+			document.getElementById("battary_container_4").style.backgroundColor = "#808080";
+			document.getElementById("battary_container_5").style.backgroundColor = "#808080";
+			document.getElementById("battary_container_6").style.backgroundColor = "#808080";
+		}else if( para <= 20 ){
+			document.getElementById('battary_container_1').style.backgroundColor = "orange";
+			document.getElementById('battary_container_2').style.backgroundColor = "#808080";
+			document.getElementById('battary_container_3').style.backgroundColor = "#808080";
+			document.getElementById('battary_container_4').style.backgroundColor = "#808080";
+			document.getElementById('battary_container_5').style.backgroundColor = "#808080";
+			document.getElementById('battary_container_6').style.backgroundColor = "#808080";
+		}else if( para <= 40){
+			document.getElementById('battary_container_1').style.backgroundColor = "yellow";
+			document.getElementById('battary_container_2').style.backgroundColor = "yellow";
+			document.getElementById('battary_container_3').style.backgroundColor = "#808080";
+			document.getElementById('battary_container_4').style.backgroundColor = "#808080";
+			document.getElementById('battary_container_5').style.backgroundColor = "#808080";
+			document.getElementById('battary_container_6').style.backgroundColor = "#808080";
+		}else if( para <= 60){
+			document.getElementById('battary_container_1').style.backgroundColor = "#06ddf9";
+			document.getElementById('battary_container_2').style.backgroundColor = "#06ddf9";
+			document.getElementById('battary_container_3').style.backgroundColor = "#06ddf9";
+			document.getElementById('battary_container_4').style.backgroundColor = "#808080";
+			document.getElementById('battary_container_5').style.backgroundColor = "#808080";
+			document.getElementById('battary_container_6').style.backgroundColor = "#808080";
+		}else if( para <= 80){
+			document.getElementById('battary_container_1').style.backgroundColor = "#06ddf9";
+			document.getElementById('battary_container_2').style.backgroundColor = "#06ddf9";
+			document.getElementById('battary_container_3').style.backgroundColor = "#06ddf9";
+			document.getElementById('battary_container_4').style.backgroundColor = "#06ddf9";
+			document.getElementById('battary_container_5').style.backgroundColor = "#808080";
+			document.getElementById('battary_container_6').style.backgroundColor = "#808080";
+		}else if( para <= 95){
+			document.getElementById('battary_container_1').style.backgroundColor = "#06ddf9";
+			document.getElementById('battary_container_2').style.backgroundColor = "#06ddf9";
+			document.getElementById('battary_container_3').style.backgroundColor = "#06ddf9";
+			document.getElementById('battary_container_4').style.backgroundColor = "#06ddf9";
+			document.getElementById('battary_container_5').style.backgroundColor = "#06ddf9";
+			document.getElementById('battary_container_6').style.backgroundColor = "#808080";
+		}else{
+			document.getElementById('battary_container_1').style.backgroundColor = "#06ddf9";
+			document.getElementById('battary_container_2').style.backgroundColor = "#06ddf9";
+			document.getElementById('battary_container_3').style.backgroundColor = "#06ddf9";
+			document.getElementById('battary_container_4').style.backgroundColor = "#06ddf9";
+			document.getElementById('battary_container_5').style.backgroundColor = "#06ddf9";
+			document.getElementById('battary_container_6').style.backgroundColor = "#06ddf9";
+		}		
+	
+	}
 
 	setInterval(function(){//---------------------------------------------------------------------------------Timer for battery and check the connection-----------
+
+		
 		//als.AlALTabletService.getBrightness().done(function(val){
 		als.AlAutonomousLife.getState().done(function(val){
 			document.getElementById('lblTemp').innerHTML = val;
 			})
         als.AlALBattery.getBatteryCharge().done(function(val){	//update battery level
             document.getElementById('lblBattery').innerHTML = val;
-        	})
+			if ( Battery != val){
+				Battery = val;
+				Battery_changelevel(Battery);
+			}
+        })
 		als.AlALAudioDevice.getOutputVolume().done(function(val){  //update volume range
 			document.getElementById('lblVolume').innerHTML=val;
 			document.getElementById("myRange").value = val;
