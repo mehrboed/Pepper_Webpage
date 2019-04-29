@@ -449,7 +449,7 @@ $(function(){
 		als.AlMotion.move(0.0,0.0,0.0);
 	}		
 	
-	//--------------------------------------change name of pepper-----------
+	//--------------------------------------program button for testing things-----------
 	$('#btn-program').on('click', function(){
 		console.log('[programmable part]');	
 		//als.AlALTabletService.showWebview("http://198.18.0.1/apps/boot-config/preloading_dialog.html"); //working
