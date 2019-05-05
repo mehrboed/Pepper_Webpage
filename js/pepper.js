@@ -350,14 +350,14 @@ $(function(){
 
     });	
 //-----------------------------------------------button movment function-----------------------------------------------
-	$('#btn-stop').on('click', function(){// stop movmentof pepper
+	$('#btn_move_stop').on('click', function(){// stop movmentof pepper
 		console.log('[Stop]');
 		als.AlMotion.move(0.0,0.0,0.0);
 	});
 	
 	//-----------Move Forward-----------
-	document.getElementById("btn-forward").onmousedown = function() {mouseDownF()};
-	document.getElementById("btn-forward").onmouseup = function() {mouseUpF()};
+	document.getElementById("btn_move_forward").onmousedown = function() {mouseDownF()};
+	document.getElementById("btn_move_forward").onmouseup = function() {mouseUpF()};
 	function mouseDownF() {			//on click Forward button
 		console.log('[Forward]');		
 	if( Speed < 0)						//if movment is in reverse then make it possitive
@@ -369,8 +369,8 @@ $(function(){
 		als.AlMotion.move(0.0,0.0,0.0);
 	}
 	//-----------Move Forward-----------
-	document.getElementById("btn-forward").onmousedown = function() {mouseDownF()};
-	document.getElementById("btn-forward").onmouseup = function() {mouseUpF()};
+	document.getElementById("btn_move_forward").onmousedown = function() {mouseDownF()};
+	document.getElementById("btn_move_forward").onmouseup = function() {mouseUpF()};
 	function mouseDownF() {			//on click Forward button
 		console.log('[Forward]');		
 	if( Speed < 0)						//if movment is in reverse then make it possitive
@@ -382,8 +382,8 @@ $(function(){
 		als.AlMotion.move(0.0,0.0,0.0);
 	}	
 	//-----------Move Back-----------
-	document.getElementById("btn-backward").onmousedown = function() {mouseDownB()};
-	document.getElementById("btn-backward").onmouseup = function() {mouseUpB()};
+	document.getElementById("btn_move_backward").onmousedown = function() {mouseDownB()};
+	document.getElementById("btn_move_backward").onmouseup = function() {mouseUpB()};
 	function mouseDownB() {			//on click button
 		console.log('[Backward]');		
 	if(Speed>0)						//if movment is in reverse then make it possitive
@@ -395,8 +395,8 @@ $(function(){
 		als.AlMotion.move(0.0,0.0,0.0);
 	}
 	//-----------Move To Left-----------
-	document.getElementById("btn-left").onmousedown = function() {mouseDownL()};
-	document.getElementById("btn-left").onmouseup = function() {mouseUpL()};
+	document.getElementById("btn_move_left").onmousedown = function() {mouseDownL()};
+	document.getElementById("btn_move_left").onmouseup = function() {mouseUpL()};
 	function mouseDownL() {			//on click button
         if(Speed<0)
 			Speed=Speed*-1;
@@ -408,8 +408,8 @@ $(function(){
 		als.AlMotion.move(0.0,0.0,0.0);
 	}	
 	//-----------Move to Right-----------
-	document.getElementById("btn-right").onmousedown = function() {mouseDownR()};
-	document.getElementById("btn-right").onmouseup = function() {mouseUpR()};
+	document.getElementById("btn_move_right").onmousedown = function() {mouseDownR()};
+	document.getElementById("btn_move_right").onmouseup = function() {mouseUpR()};
 	function mouseDownR() {			//on click button
 		if(Speed>0)
 			Speed=Speed*-1;
@@ -422,8 +422,8 @@ $(function(){
 		als.AlMotion.move(0.0,0.0,0.0);
 	}	
 	//-----------Rotate to Left-----------
-	document.getElementById("btn-ccw").onmousedown = function() {mouseDownCCW()};
-	document.getElementById("btn-ccw").onmouseup = function() {mouseUpCCW()};
+	document.getElementById("btn_move_ccw").onmousedown = function() {mouseDownCCW()};
+	document.getElementById("btn_move_ccw").onmouseup = function() {mouseUpCCW()};
 	function mouseDownCCW() {			//on click button
         if(Speed<0)
 			Speed=Speed*-1;
@@ -436,8 +436,8 @@ $(function(){
 	}	
 	
 	//-----------Rotate to Right-----------
-	document.getElementById("btn-cw").onmousedown = function() {mouseDownCW()};
-	document.getElementById("btn-cw").onmouseup = function() {mouseUpCW()};
+	document.getElementById("btn_move_cw").onmousedown = function() {mouseDownCW()};
+	document.getElementById("btn_move_cw").onmouseup = function() {mouseUpCW()};
 	function mouseDownCW() {			//on click
 		if(Speed>0)
 			Speed=Speed*-1;
