@@ -5,6 +5,7 @@ $(function(){
 	var AutonomousBlinking = new Boolean(true);
 	var intial = new Boolean(false);
 	var counter = "0";
+    var rDuration = 0.5;
 	var Battery = "0";
 	//Volume setting -------------------------------------------------------------------------
 		var sliderVolume = document.getElementById("myRange");
@@ -498,14 +499,80 @@ $(function(){
 			AutonomousBlinking = true;
 		}
     });
+	$('#led_cautious').on('click',function () {
+		rDuration = 0.2;
+        als.AlLeds.fadeRGB( "FaceLed0", 0x1111FF, rDuration );
+        als.AlLeds.fadeRGB( "FaceLed1", 0x1111FF, rDuration );
+        als.AlLeds.fadeRGB( "FaceLed2", 0x6611FF, rDuration );
+        als.AlLeds.fadeRGB( "FaceLed3", 0x1111FF, rDuration );
+        als.AlLeds.fadeRGB( "FaceLed4", 0x33CCFF, rDuration );
+        als.AlLeds.fadeRGB( "FaceLed5", 0x33CCFF, rDuration );
+        als.AlLeds.fadeRGB( "FaceLed6", 0x6611FF, rDuration );
+        als.AlLeds.fadeRGB( "FaceLed7", 0x6611FF, rDuration );
+        
+            //#time.sleep( 0.1 );
 
+        als.AlLeds.fadeRGB( "FaceLed0", 0x33CCFF, rDuration*3 );
+        als.AlLeds.fadeRGB( "FaceLed1", 0x33CCFF, rDuration*3 );
+        als.AlLeds.fadeRGB( "FaceLed2", 0x33CCFF, rDuration*3 );
+        als.AlLeds.fadeRGB( "FaceLed3", 0x33CCFF, rDuration*3 );
+        als.AlLeds.fadeRGB( "FaceLed4", 0x1111FF, rDuration*3 );
+        als.AlLeds.fadeRGB( "FaceLed5", 0x1111FF, rDuration*3 );
+        als.AlLeds.fadeRGB( "FaceLed6", 0x33CCFF, rDuration*3 );
+        als.AlLeds.fadeRGB( "FaceLed7", 0x33CCFF, rDuration*3 );
+		
+    })
+	
+    $('#led_laugh').on('click',function () {
+        als.AlLeds.fadeRGB( "FaceLed0", 0x787e9d, rDuration );
+        als.AlLeds.fadeRGB( "FaceLed1", 0x000000, rDuration );
+        als.AlLeds.fadeRGB( "FaceLed2", 0x2ec1e9, rDuration );
+        als.AlLeds.fadeRGB( "FaceLed3", 0x000000, rDuration );
+        als.AlLeds.fadeRGB( "FaceLed4", 0x000000, rDuration );
+        als.AlLeds.fadeRGB( "FaceLed5", 0x1e9980, rDuration );
+        als.AlLeds.fadeRGB( "FaceLed6", 0x000000, rDuration );
+        als.AlLeds.fadeRGB( "FaceLed7", 0x000000, rDuration );
+
+				
+
+        als.AlLeds.fadeRGB( "FaceLed0", 0x0400a1, rDuration*2 );
+        als.AlLeds.fadeRGB( "FaceLed1", 0x14a176, rDuration*2 );
+        als.AlLeds.fadeRGB( "FaceLed2", 0x000022, rDuration*2 );
+        als.AlLeds.fadeRGB( "FaceLed3", 0x000000, rDuration*2 );
+        als.AlLeds.fadeRGB( "FaceLed4", 0x00000e, rDuration*2 );
+        als.AlLeds.fadeRGB( "FaceLed5", 0x56ffff, rDuration*2 );
+        als.AlLeds.fadeRGB( "FaceLed6", 0x000020, rDuration*2 );
+        als.AlLeds.fadeRGB( "FaceLed7", 0x000038, rDuration*2 );
+
+    })
+    $('#led_thinking').on('click',function () {
+        als.AlLeds.fadeRGB( "FaceLed0", 0x1111FF, rDuration );
+        als.AlLeds.fadeRGB( "FaceLed1", 0x1111FF, rDuration );
+        als.AlLeds.fadeRGB( "FaceLed2", 0x1111FF, rDuration );
+        als.AlLeds.fadeRGB( "FaceLed3", 0x1111FF, rDuration );
+        als.AlLeds.fadeRGB( "FaceLed4", 0x33CCFF, rDuration );
+        als.AlLeds.fadeRGB( "FaceLed5", 0x33CCFF, rDuration );
+        als.AlLeds.fadeRGB( "FaceLed6", 0x1111FF, rDuration );
+        als.AlLeds.fadeRGB( "FaceLed7", 0x1111FF, rDuration );
+        
+            //#time.sleep( 0.1 );
+
+        als.AlLeds.fadeRGB( "FaceLed0", 0x33CCFF, rDuration*3 );
+        als.AlLeds.fadeRGB( "FaceLed1", 0x33CCFF, rDuration*3 );
+        als.AlLeds.fadeRGB( "FaceLed2", 0x33CCFF, rDuration*3 );
+        als.AlLeds.fadeRGB( "FaceLed3", 0x33CCFF, rDuration*3 );
+        als.AlLeds.fadeRGB( "FaceLed4", 0x1111FF, rDuration*3 );
+        als.AlLeds.fadeRGB( "FaceLed5", 0x1111FF, rDuration*3 );
+        als.AlLeds.fadeRGB( "FaceLed6", 0x33CCFF, rDuration*3 );
+        ALLeds.fadeRGB( "FaceLed7", 0x33CCFF, rDuration*3 );
+    })
 	$('#led_happy').on('click',function () {
 	    for ( var i=0 ; i<3 ; i++){
             setTimeout(myFunction,500);
         }
 
         function myFunction() {
-            var rDuration = 0.5;
+
             als.AlLeds.fadeRGB("FaceLed0", 0x00002e30, rDuration);
             als.AlLeds.fadeRGB("FaceLed1", 0x00002022, rDuration);
             als.AlLeds.fadeRGB("FaceLed2", 0x0020d700, rDuration);
