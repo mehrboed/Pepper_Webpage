@@ -497,20 +497,49 @@ $(function(){
 			console.log('[AutonomousBlinking set on]');	
 			AutonomousBlinking = true;
 		}
-    });	
-	$('#led-off').on('click', function(){
+    });
+
+	$('#led_happy').on('click',function () {
+	    for ( var i=0 ; i<3 ; i++){
+            setTimeout(myFunction,500);
+        }
+
+        function myFunction() {
+            var rDuration = 0.5;
+            als.AlLeds.fadeRGB("FaceLed0", 0x00002e30, rDuration);
+            als.AlLeds.fadeRGB("FaceLed1", 0x00002022, rDuration);
+            als.AlLeds.fadeRGB("FaceLed2", 0x0020d700, rDuration);
+            als.AlLeds.fadeRGB("FaceLed3", 0x00b59b04, rDuration);
+            als.AlLeds.fadeRGB("FaceLed4", 0x003aff00, rDuration);
+            als.AlLeds.fadeRGB("FaceLed5", 0x00001a2a, rDuration);
+            als.AlLeds.fadeRGB("FaceLed6", 0x0000182e, rDuration);
+            als.AlLeds.fadeRGB("FaceLed7", 0x00001232, rDuration);
+
+
+            als.AlLeds.fadeRGB("FaceLed0", 0x00007030, rDuration * 2);
+            als.AlLeds.fadeRGB("FaceLed1", 0x00006622, rDuration * 2);
+            als.AlLeds.fadeRGB("FaceLed2", 0x00db8f00, rDuration * 2);
+            als.AlLeds.fadeRGB("FaceLed3", 0x000aff04, rDuration * 2);
+            als.AlLeds.fadeRGB("FaceLed4", 0x00d3dd00, rDuration * 2);
+            als.AlLeds.fadeRGB("FaceLed5", 0x00004c2a, rDuration * 2);
+            als.AlLeds.fadeRGB("FaceLed6", 0x0000502e, rDuration * 2);
+            als.AlLeds.fadeRGB("FaceLed7", 0x00004e32, rDuration * 2);
+        }
+        als.AlLeds.reset("AllLeds");
+    })
+	$('#led_off').on('click', function(){
 		console.log('[turn leds off]');	
 		als.AlLeds.off("AllLeds"); 				//Set a LED or Group of LEDs to their default state.
     });	
-		$('#led-on').on('click', function(){
+	$('#led_on').on('click', function(){
 		console.log('[turn leds off]');	
 		als.AlLeds.on("AllLeds"); 				//Set a LED or Group of LEDs to their default state.
     });	
-		$('#led-disco').on('click', function(){
+	$('#led_disco').on('click', function(){
 		console.log('[turn leds off]');	
 		als.AlLeds.randomEyes(10.0); 				//Set a LED or Group of LEDs to their default state.
     });	
-	$('#led-circle').on('click', function(){
+	$('#led_circle').on('click', function(){
 		console.log('[turn leds off]');	
 		als.AlLeds.rasta(3.0); 				//Set a LED or Group of LEDs to their default state.
     });	
