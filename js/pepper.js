@@ -499,7 +499,7 @@ $(function(){
 			AutonomousBlinking = true;
 		}
     });
-	$('#led_blinking').on('click',function () {
+	$('#led_blink').on('click',function () {
         rDuration = 0.05;
         als.AlLeds.fadeRGB( "FaceLed0", 0x000000, rDuration );
         als.AlLeds.fadeRGB( "FaceLed1", 0x000000, rDuration );
