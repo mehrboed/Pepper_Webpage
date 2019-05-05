@@ -499,6 +499,23 @@ $(function(){
 			AutonomousBlinking = true;
 		}
     });
+	$('#led_blinking').on('click',function () {
+        rDuration = 0.05;
+        als.AlLeds.fadeRGB( "FaceLed0", 0x000000, rDuration );
+        als.AlLeds.fadeRGB( "FaceLed1", 0x000000, rDuration );
+        als.AlLeds.fadeRGB( "FaceLed2", 0xffffff, rDuration );
+        als.AlLeds.fadeRGB( "FaceLed3", 0x000000, rDuration );
+        als.AlLeds.fadeRGB( "FaceLed4", 0x000000, rDuration );
+        als.AlLeds.fadeRGB( "FaceLed5", 0x000000, rDuration );
+        als.AlLeds.fadeRGB( "FaceLed6", 0xffffff, rDuration );
+        als.AlLeds.fadeRGB( "FaceLed7", 0x000000, rDuration );
+
+        //time.sleep( 0.1 );
+
+        rDuration = 0.05;
+        als.AlLeds.fadeRGB( "FaceLeds", 0xffffff, rDuration );
+
+    })
 	$('#led_cautious').on('click',function () {
 		rDuration = 0.2;
         als.AlLeds.fadeRGB( "FaceLed0", 0x1111FF, rDuration );
