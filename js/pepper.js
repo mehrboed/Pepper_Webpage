@@ -6,7 +6,7 @@ $(function(){
 	var intial = new Boolean(false);
 	var counter = "0";
     var rDuration = 0.5;
-	var Battery = "0";
+
 	//Volume setting -------------------------------------------------------------------------
 		var sliderVolume = document.getElementById("myRange");
 		var outputVolume = document.getElementById("lblVolume");
@@ -118,8 +118,10 @@ $(function(){
 			qis.service('ALAutonomousBlinking').done(function(ins){ 
                 als.AlAutonomousBlinking  =  ins ; 
             });
-			
-			
+
+          /* qis.service('ALSystemProxy').done(function(ins){ // Notification Reader
+               als.AlSystemProxy  =  ins ;
+           });*/
 			
 
 			
@@ -456,32 +458,38 @@ $(function(){
 		//als.AlALTabletService.showWebview("http://198.18.0.1/apps/boot-config/preloading_dialog.html"); //working
 		//als.AlALTabletService.showWebview("http://198.18.0.1/apps/boot-config/preloading_dialog.html"); 
 		als.AlALTabletService.showWebview("http://198.18.0.1/apps/tablettest-a12269/Url_Page.jpg");
-    });	
-	
+    });
+	$('#logoWSJ_show').on('click', function () {
+        //als.AlALTabletService.showWebview("http://198.18.0.1/apps/hangman-21c6c1/html/img/Url_Page.jpg");
+        als.AlALTabletService.showWebview("http://198.18.0.1/apps/boot-config/preloading_dialog.html");
+
+    })
+
 	//--------------------------------------color of pepper----------------------------------------------- LEDs --------------------
 	$('#btn-red').on('click', function(){
 		console.log('[Color Red]');	
-		als.AlLeds.fadeRGB("AllLeds","red",0.0); //set all leds to red
+		//als.AlLeds.fadeRGB("AllLeds","red",0.0); //set all leds to red
+        als.AlLeds.fadeRGB("FaceLeds","red",0.0); //set all leds to red
     });	
 	$('#btn-green').on('click', function(){
 		console.log('[Color Green]');	
-		als.AlLeds.fadeRGB("AllLeds","green",0.0); //set all leds to green
+		als.AlLeds.fadeRGB("FaceLeds","green",0.0); //set all leds to green
     });	
 	$('#btn-blue').on('click', function(){
 		console.log('[Color Blue]');
-		als.AlLeds.fadeRGB("AllLeds","blue",0.0); //set all leds to blue	
+		als.AlLeds.fadeRGB("FaceLeds","blue",0.0); //set all leds to blue
     });	
 	$('#btn-yellow').on('click', function(){
 		console.log('[Color Yellow]');	
-		als.AlLeds.fadeRGB("AllLeds","yellow",0.0); //set all leds to yellow
+		als.AlLeds.fadeRGB("FaceLeds","yellow",0.0); //set all leds to yellow
     });	
 	$('#btn-cyan').on('click', function(){
 		console.log('[Color cyan]');	
-		als.AlLeds.fadeRGB("AllLeds","cyan",0.0); //set all leds to cyan
+		als.AlLeds.fadeRGB("FaceLeds","cyan",0.0); //set all leds to cyan
     });	
 	$('#btn-magenta').on('click', function(){
 		console.log('[Color magenta]');	
-		als.AlLeds.fadeRGB("AllLeds","magenta",0.0); //set all leds to magenta
+		als.AlLeds.fadeRGB("FaceLeds","magenta",0.0); //set all leds to magenta
     });	
 	$('#btn-def').on('click', function(){
 		console.log('[Default Color]');	
@@ -500,6 +508,7 @@ $(function(){
 		}
     });
 	$('#led_blink').on('click',function () {
+        als.AlAutonomousBlinking.setEnabled(false);
         rDuration = 0.05;
         als.AlLeds.fadeRGB( "FaceLed0", 0x000000, rDuration );
         als.AlLeds.fadeRGB( "FaceLed1", 0x000000, rDuration );
@@ -517,6 +526,7 @@ $(function(){
 
     })
 	$('#led_cautious').on('click',function () {
+        als.AlAutonomousBlinking.setEnabled(false);
 		rDuration = 0.2;
         als.AlLeds.fadeRGB( "FaceLed0", 0x1111FF, rDuration );
         als.AlLeds.fadeRGB( "FaceLed1", 0x1111FF, rDuration );
@@ -541,6 +551,7 @@ $(function(){
     })
 	
     $('#led_laugh').on('click',function () {
+        als.AlAutonomousBlinking.setEnabled(false);
         als.AlLeds.fadeRGB( "FaceLed0", 0x787e9d, rDuration );
         als.AlLeds.fadeRGB( "FaceLed1", 0x000000, rDuration );
         als.AlLeds.fadeRGB( "FaceLed2", 0x2ec1e9, rDuration );
@@ -563,6 +574,7 @@ $(function(){
 
     })
     $('#led_thinking').on('click',function () {
+        als.AlAutonomousBlinking.setEnabled(false);
         als.AlLeds.fadeRGB( "FaceLed0", 0x1111FF, rDuration );
         als.AlLeds.fadeRGB( "FaceLed1", 0x1111FF, rDuration );
         als.AlLeds.fadeRGB( "FaceLed2", 0x1111FF, rDuration );
@@ -584,6 +596,7 @@ $(function(){
         ALLeds.fadeRGB( "FaceLed7", 0x33CCFF, rDuration*3 );
     })
 	$('#led_happy').on('click',function () {
+        als.AlAutonomousBlinking.setEnabled(false);
 	    for ( var i=0 ; i<3 ; i++){
             setTimeout(myFunction,500);
         }
@@ -692,30 +705,37 @@ $(function(){
 	}
 
 	setInterval(function(){//---------------------------------------------------------------------------------Timer for battery and check the connection-----------
+        if (counter == "1") {
 
-		
-		//als.AlALTabletService.getBrightness().done(function(val){
-		als.AlAutonomousLife.getState().done(function(val){
-			document.getElementById('lblState').innerHTML = val;
-			})
-        als.AlALBattery.getBatteryCharge().done(function(val){	//update battery level
-            document.getElementById('lblBattery').innerHTML = val;
-			if ( Battery != val){
-				Battery = val;
-				Battery_changelevel(Battery);
-			}
-        })
-		als.AlALAudioDevice.getOutputVolume().done(function(val){  //update volume range
-			document.getElementById('lblVolume').innerHTML=val;
-			document.getElementById("myRange").value = val;
-		})
+            //als.AlALTabletService.getBrightness().done(function(val){
+            als.AlAutonomousLife.getState().done(function (val) {
+                document.getElementById('lblState').innerHTML = val;
+            })
+            als.AlALBattery.getBatteryCharge().done(function (val) {	//update battery level
+                var Battery = "0";
+                document.getElementById('lblBattery').innerHTML = val;
+                if (Battery != val) {
+                    Battery = val;
+                    Battery_changelevel(Battery);
+                }
+            })
+            als.AlALAudioDevice.getOutputVolume().done(function (val) {  //update volume range
+                document.getElementById('lblVolume').innerHTML = val;
+                document.getElementById("myRange").value = val;
+            })
+        }else {
+            counter++;
+
+        }
+
+        //console.log(als.AlSystemProxy.severity()); can not access to qimessage
+
+		///-------------------**getting name of pepper and show on label after 5 seconds
 		/*if (counter == "5"){
 			var robot = als.AlALSystem.robotName();
 			document.getElementById('robot_name').innerHTML = robot;
 			console.log(robot);
 			intial = true;
-			
-			
 		}else
 			counter ++;
 		
