@@ -119,9 +119,9 @@ $(function(){
                 als.AlAutonomousBlinking  =  ins ; 
             });
 
-          /* qis.service('ALSystemProxy').done(function(ins){ // Notification Reader
+           qis.service('ALSystemProxy').done(function(ins){ // Notification Reader
                als.AlSystemProxy  =  ins ;
-           });*/
+           });
 			
 
 			
@@ -457,7 +457,8 @@ $(function(){
 		console.log('[programmable part]');	
 		//als.AlALTabletService.showWebview("http://198.18.0.1/apps/boot-config/preloading_dialog.html"); //working
 		//als.AlALTabletService.showWebview("http://198.18.0.1/apps/boot-config/preloading_dialog.html"); 
-		als.AlALTabletService.showWebview("http://198.18.0.1/apps/tablettest-a12269/Url_Page.jpg");
+		//als.AlALTabletService.showWebview("http://198.18.0.1/apps/tablettest-a12269/Url_Page.jpg");
+		als.AlALSystem.setRobotName("Robbie");
     });
 	$('#logoWSJ_show').on('click', function () {
         //als.AlALTabletService.showWebview("http://198.18.0.1/apps/hangman-21c6c1/html/img/Url_Page.jpg");
